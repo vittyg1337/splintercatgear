@@ -160,7 +160,7 @@ Sitewide release checks:
 
 Current state:
 
-- [x] `/gear/` identifies itself as a dated Marketplace Watch rather than a tested ranking.
+- [x] `/gear/` separates category Research Shortlists from its dated Marketplace Watch and does not present either as a tested ranking.
 - [x] The current disclosure says Amazon links are ordinary and non-monetized.
 - [x] The repository includes an Amazon-link validation script.
 - [x] No placeholder affiliate tag should be published.

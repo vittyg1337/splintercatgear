@@ -1,0 +1,358 @@
+{
+  "version": "2026-08-30",
+  "publishedAt": "2026-08-30",
+  "checkedAt": "2026-08-30",
+  "methodologyUrl": "/methodology/",
+  "products": [
+    {
+      "slug": "catstages-tower-of-tracks",
+      "category": "cat-toys",
+      "categoryName": "Cat toys",
+      "brand": "Catstages",
+      "name": "Tower of Tracks",
+      "model": "317",
+      "format": "Contained track toy",
+      "pickLabel": "Contained batting pick",
+      "shortAnswer": "A contained, battery-free track toy for cats that enjoy batting and visual pursuit.",
+      "summary": "Three stacked tracks keep the balls captive, which makes this a practical self-directed batting option during supervised use without loose balls rolling under furniture.",
+      "bestFor": "Cats that repeatedly bat at moving objects, supervised self-directed play, and compatible multi-cat play in a compact area.",
+      "skipIf": "Your cat only engages with human-led prey movement, chews hard plastic, or becomes frustrated by toys whose ball cannot be captured.",
+      "specs": [
+        {"label": "Play style", "value": "Independent batting"},
+        {"label": "Size", "value": "10 × 10 × 5.25 in"},
+        {"label": "Mechanism", "value": "3 tracks, 6 captive balls"},
+        {"label": "Power", "value": "None"}
+      ],
+      "buyingChecks": [
+        "Confirm the base grips your flooring instead of sliding during play.",
+        "Choose a placement with room for the cat to circle the toy.",
+        "Keep a human-led wand or toss toy in the rotation; this does not replace interactive play."
+      ],
+      "cautions": [
+        "Inspect the tracks and balls for cracks or separated parts before use.",
+        "Remove the toy if it becomes damaged or your cat attempts to chew pieces from it.",
+        "Introduce it in a quiet area and let the cat disengage freely."
+      ],
+      "maintenance": "Wipe the plastic and tracks with a damp cloth, dry fully, and clear trapped debris. Recheck the balls and track openings after cleaning.",
+      "manufacturerUrl": "https://outwardhound.com/tower-of-tracks.html",
+      "manufacturerLabel": "Catstages product page",
+      "amazonUs": "https://www.amazon.com/dp/B00DT2WL26",
+      "amazonCa": "https://www.amazon.ca/s?k=B00DT2WL26",
+      "asinUs": "B00DT2WL26",
+      "relatedGuide": "/guides/indoor-cat-enrichment/",
+      "relatedGuideLabel": "Indoor cat enrichment guide"
+    },
+    {
+      "slug": "cat-dancer-101",
+      "category": "cat-toys",
+      "categoryName": "Cat toys",
+      "brand": "Cat Dancer Products",
+      "name": "Cat Dancer 101",
+      "model": "101",
+      "format": "Human-led wire toy",
+      "pickLabel": "Low-cost interactive pick",
+      "shortAnswer": "A minimal spring-wire lure that creates irregular movement during supervised play.",
+      "summary": "The simple spring-steel wire and rolled-cardboard ends create movement without batteries, apps, or a large storage footprint.",
+      "bestFor": "Cats motivated by small, erratic prey-like movement and people who want an inexpensive human-led play option.",
+      "skipIf": "Your cat aggressively chews cardboard or wire, play cannot be supervised, or anyone may leave the toy accessible after a session.",
+      "specs": [
+        {"label": "Play style", "value": "Human-led chase"},
+        {"label": "Construction", "value": "Single spring-steel wire"},
+        {"label": "Materials", "value": "Spring steel and rolled cardboard"},
+        {"label": "Power", "value": "None"}
+      ],
+      "buyingChecks": [
+        "Plan a clear play zone away from lamps, stairs, and hard furniture edges.",
+        "Make sure the cardboard ends and wire arrive intact and remain firmly attached.",
+        "Decide where the toy will be stored out of reach immediately after play."
+      ],
+      "cautions": [
+        "Supervise every session and do not leave the wire available for unattended play.",
+        "Stop using it if the wire kinks, a tip becomes exposed, or cardboard loosens.",
+        "Avoid directing leaps toward unsafe heights or slippery landings."
+      ],
+      "maintenance": "Inspect the full wire and both cardboard ends before each session. Store it straight or gently curved where it cannot be chewed or stepped on.",
+      "manufacturerUrl": "https://catdancer.com/product/cat-dancer/",
+      "manufacturerLabel": "Cat Dancer product page",
+      "amazonUs": "https://www.amazon.com/dp/B0006N9I68",
+      "amazonCa": "https://www.amazon.ca/s?k=B0006N9I68",
+      "asinUs": "B0006N9I68",
+      "relatedGuide": "/guides/indoor-cat-enrichment/",
+      "relatedGuideLabel": "Indoor cat enrichment guide"
+    },
+    {
+      "slug": "go-cat-da-bird",
+      "category": "cat-toys",
+      "categoryName": "Cat toys",
+      "brand": "Go Cat",
+      "name": "Da Bird Feather Teaser",
+      "model": "",
+      "variant": "36-inch rod",
+      "format": "Refillable feather wand",
+      "pickLabel": "Human-led wand pick",
+      "shortAnswer": "A refillable feather wand for supervised stalking, chasing, leaping, and capture sequences.",
+      "summary": "The long rod, string, swivel, and replaceable feather attachment make this a movement-focused option in the shortlist.",
+      "bestFor": "Cats that engage with aerial prey movement and people able to run short, fully supervised play sessions.",
+      "skipIf": "Your cat eats feathers or string, the toy cannot be locked away after play, or jumping would be unsafe for the cat or room.",
+      "specs": [
+        {"label": "Play style", "value": "Human-led aerial chase"},
+        {"label": "Rod", "value": "36 in"},
+        {"label": "Attachment", "value": "Replaceable natural-feather lure"},
+        {"label": "Power", "value": "None"}
+      ],
+      "buyingChecks": [
+        "Confirm the exact kit includes the rod, line, swivel, and intended attachment.",
+        "Check that replacement attachments are available from a trusted retailer.",
+        "Create a storage location that the cat cannot open or climb into."
+      ],
+      "cautions": [
+        "Never leave a wand, string, or feather attachment with a cat unattended.",
+        "Inspect the line, clips, swivel, feathers, and rod before every session.",
+        "Replace loose components immediately and contact a veterinarian if any string or feather is swallowed."
+      ],
+      "maintenance": "Keep the feather lure dry, remove loose feathers, check every connector, and store the entire toy in a closed cabinet after each session.",
+      "manufacturerUrl": "https://www.dabird.com/da-bird-1",
+      "manufacturerLabel": "Official Da Bird product page",
+      "secondarySourceUrl": "https://www.petco.com/product/da-bird-feather-teaser",
+      "secondarySourceLabel": "Retailer dimensions and format",
+      "amazonUs": "https://www.amazon.com/s?k=Go+Cat+Da+Bird+36-inch+rod",
+      "amazonCa": "https://www.amazon.ca/s?k=Go+Cat+Da+Bird+36-inch+rod",
+      "relatedGuide": "/guides/indoor-cat-enrichment/",
+      "relatedGuideLabel": "Indoor cat enrichment guide"
+    },
+    {
+      "slug": "nina-ottosson-buggin-out",
+      "category": "cat-toys",
+      "categoryName": "Cat toys",
+      "brand": "Nina Ottosson by Catstages",
+      "name": "Buggin’ Out Puzzle & Play",
+      "model": "69479",
+      "format": "Level 2 food puzzle",
+      "pickLabel": "Food-puzzle pick",
+      "shortAnswer": "A paw-operated puzzle that turns part of a meal or treat allowance into a foraging task.",
+      "summary": "Sliding leaves and movable pegs cover multiple food cups, offering a more deliberate problem-solving activity than a free-moving toy.",
+      "bestFor": "Food-motivated cats ready for a beginner-to-intermediate puzzle and households willing to teach the mechanism gradually.",
+      "skipIf": "Your cat guards food around other animals, chews the board, needs a veterinary feeding plan that excludes puzzle use, or becomes distressed by food frustration.",
+      "specs": [
+        {"label": "Play style", "value": "Foraging puzzle"},
+        {"label": "Size (L × W × H)", "value": "13.78 × 11.42 × 1.77 in"},
+        {"label": "Capacity", "value": "About 1/4 cup"},
+        {"label": "Care", "value": "Hand wash"}
+      ],
+      "buyingChecks": [
+        "Confirm the exact model and current food-contact care instructions.",
+        "Count puzzle food within the cat’s normal daily intake.",
+        "For multiple cats, decide whether each needs a separated puzzle station."
+      ],
+      "cautions": [
+        "Supervise initial sessions and begin with compartments partly exposed.",
+        "Remove the puzzle if the cat chews or damages the board or moving pieces.",
+        "Wash after wet-food use and discard food left out beyond your veterinarian’s or food maker’s guidance."
+      ],
+      "maintenance": "Hand wash with mild soap, rinse thoroughly, dry fully, and inspect the integrated moving pieces before refilling.",
+      "manufacturerUrl": "https://www.nina-ottosson.com/products/all-products/bugginout-puzzle-play-cat-puzzle-game.html",
+      "manufacturerLabel": "Nina Ottosson product page",
+      "amazonUs": "https://www.amazon.com/dp/B0872J3XV9",
+      "amazonCa": "https://www.amazon.ca/s?k=B0872J3XV9",
+      "asinUs": "B0872J3XV9",
+      "relatedGuide": "/guides/food-water-station/",
+      "relatedGuideLabel": "Food and water station guide"
+    },
+    {
+      "slug": "smartcat-ultimate-scratching-post",
+      "category": "scratching-posts",
+      "categoryName": "Scratching posts",
+      "brand": "SmartCat by Pioneer Pet",
+      "name": "Ultimate Scratching Post",
+      "model": "3832",
+      "format": "Tall woven-sisal post",
+      "pickLabel": "Tall vertical pick",
+      "shortAnswer": "A 32-inch woven-sisal post with a wide base for cats that prefer a full upright stretch.",
+      "summary": "This format prioritizes usable vertical height, a broad base, and flat woven sisal instead of carpet.",
+      "bestFor": "Adult cats that scratch vertically, reach high on furniture, and prefer a firm fibrous surface.",
+      "skipIf": "Your cat primarily scratches floors or cardboard, the 16-inch square base blocks a walkway, or the post cannot sit near the cat’s chosen scratching location.",
+      "specs": [
+        {"label": "Orientation", "value": "Vertical"},
+        {"label": "Height", "value": "32 in"},
+        {"label": "Base", "value": "16 × 16 in"},
+        {"label": "Surface", "value": "Woven sisal"}
+      ],
+      "buyingChecks": [
+        "Measure the cat’s stretched reach and the full base footprint.",
+        "Place the post beside an existing scratch target or waking area.",
+        "Confirm assembly hardware is complete and can be retightened."
+      ],
+      "cautions": [
+        "Check the base and post fasteners regularly for movement.",
+        "Replace the post if structural material or fasteners become exposed.",
+        "Offer a separate horizontal option if the cat uses more than one orientation."
+      ],
+      "maintenance": "Vacuum shed fibers, inspect the top and base connections, and retighten the manufacturer-supplied hardware when necessary.",
+      "manufacturerUrl": "https://pioneerpet.com/product/3832-ultimate-scratching-post/",
+      "manufacturerLabel": "Pioneer Pet model 3832 page",
+      "amazonUs": "https://www.amazon.com/dp/B000634MH8",
+      "amazonCa": "https://www.amazon.ca/s?k=B000634MH8",
+      "asinUs": "B000634MH8",
+      "relatedGuide": "/guides/scratching-post-placement/",
+      "relatedGuideLabel": "Scratching-post placement guide"
+    },
+    {
+      "slug": "amazon-basics-35-inch-scratching-post",
+      "category": "scratching-posts",
+      "categoryName": "Scratching posts",
+      "brand": "Amazon Basics",
+      "name": "Sturdy Scratching Post, Large",
+      "model": "ZJS-13281-3",
+      "variant": "Large, 35.4-inch classic single post",
+      "format": "Tall jute post",
+      "pickLabel": "Tall marketplace option",
+      "shortAnswer": "A taller single-post format for buyers prioritizing tall upright reach within a 15.75-inch square footprint.",
+      "summary": "Its published dimensions make it useful as a marketplace comparison point against the shorter SmartCat post, especially for long-bodied vertical scratchers.",
+      "bestFor": "Cats that stretch high, buyers comparing tall posts, and homes with a clear square floor area near the existing scratch target.",
+      "skipIf": "A dangling toy encourages chewing, the base would obstruct circulation, or your cat has shown a strong preference for cardboard or horizontal scratching.",
+      "specs": [
+        {"label": "Orientation", "value": "Vertical"},
+        {"label": "Height", "value": "35.43 in"},
+        {"label": "Base", "value": "15.75 × 15.75 in"},
+        {"label": "Listed weight", "value": "About 16.1 lb"}
+      ],
+      "buyingChecks": [
+        "Verify the exact large 35.4-inch variant before ordering.",
+        "Confirm the latest assembly instructions and listed surface material.",
+        "Check whether the hanging toy can be removed if your cat chews cords or small parts."
+      ],
+      "cautions": [
+        "Inspect and retighten fasteners after assembly and during use.",
+        "Remove or replace the hanging toy if its cord or attachment frays.",
+        "Stop use if the post wobbles or structural material becomes exposed."
+      ],
+      "maintenance": "Vacuum fibers, inspect the base and post joint, retighten hardware, and check the attached toy before each use period.",
+      "manufacturerUrl": "https://www.amazon.com/dp/B07G3SLKQ8",
+      "manufacturerLabel": "Amazon product and private-label record",
+      "amazonUs": "https://www.amazon.com/dp/B07G3SLKQ8",
+      "amazonCa": "https://www.amazon.ca/s?k=B07G3SLKQ8",
+      "asinUs": "B07G3SLKQ8",
+      "relatedGuide": "/guides/scratching-post-placement/",
+      "relatedGuideLabel": "Scratching-post placement guide"
+    },
+    {
+      "slug": "petfusion-ultimate-scratcher-lounge",
+      "category": "scratching-posts",
+      "categoryName": "Scratching posts",
+      "brand": "PetFusion",
+      "name": "Ultimate Cat Scratcher Lounge",
+      "model": "PF-CL1",
+      "variant": "Standard Amazon selection",
+      "format": "Horizontal cardboard lounger",
+      "pickLabel": "Horizontal cardboard pick",
+      "shortAnswer": "A wide curved cardboard scratcher for cats that work across a horizontal surface and also lounge on it.",
+      "summary": "This is the orientation counterpoint to the two tall posts: a broad corrugated surface with curved sides and no assembly. The Amazon selection is PF-CL1; the linked maker page currently documents the PF-CL2 product family, so variant-specific facts still need a retailer check.",
+      "bestFor": "Cats that scratch rugs, floors, or cardboard and households with enough linear floor space for a 33.9-inch lounger.",
+      "skipIf": "Cardboard debris is unacceptable, your cat only scratches upright surfaces, or the long footprint would narrow a walkway.",
+      "specs": [
+        {"label": "Orientation", "value": "Horizontal and curved"},
+        {"label": "Size", "value": "33.9 × 10.5 × 10.5 in"},
+        {"label": "Surface", "value": "Corrugated cardboard"},
+        {"label": "Assembly", "value": "None"}
+      ],
+      "buyingChecks": [
+        "Measure the full length and the cat’s preferred scratching route.",
+        "Decide whether cardboard shedding fits the cleaning routine.",
+        "Pair it with a tall post if the cat also scratches furniture vertically."
+      ],
+      "cautions": [
+        "Remove loose chunks that could be chewed or swallowed.",
+        "Replace the lounger when the structure loses firmness or exposes adhesive.",
+        "Do not assume catnip will attract every cat."
+      ],
+      "maintenance": "Vacuum cardboard debris, rotate the scratcher if wear concentrates in one area, and replace it when the surface or structure breaks down.",
+      "manufacturerUrl": "https://www.petmate.com/products/petfusion-ultimate-cat-scratcher-lounge",
+      "manufacturerLabel": "PetFusion current product-family page (PF-CL2)",
+      "secondarySourceUrl": "https://www.amazon.com/dp/B004X6UEH6",
+      "secondarySourceLabel": "Amazon exact PF-CL1 product record",
+      "sourceNote": "The retailer selection is PF-CL1. The current manufacturer-family page identifies PF-CL2, so it supports the design family—not an exact-SKU equivalence.",
+      "amazonUs": "https://www.amazon.com/dp/B004X6UEH6",
+      "amazonCa": "https://www.amazon.ca/s?k=B004X6UEH6",
+      "asinUs": "B004X6UEH6",
+      "relatedGuide": "/guides/scratching-post-placement/",
+      "relatedGuideLabel": "Scratching-post placement guide"
+    },
+    {
+      "slug": "yaheetech-54-inch-cat-tree",
+      "category": "cat-trees-small-spaces",
+      "categoryName": "Cat trees for small spaces",
+      "brand": "Yaheetech",
+      "name": "54-inch Cat Tree Tower",
+      "model": "YT-00073130-54",
+      "format": "Tall multi-level tower",
+      "pickLabel": "Tall small-footprint option",
+      "shortAnswer": "A 54-inch tower that packs two condos, three upper perches, and scratching posts into a roughly 19.5-inch square footprint.",
+      "summary": "The tower is a compact way to add height, but its individual perches and condos matter more than the outside height when judging real fit.",
+      "bestFor": "One or two small-to-medium cats, households needing vertical territory, and rooms where the included wall strap can be installed.",
+      "skipIf": "Your cat is too large for the 12-inch perches or condos, wall anchoring is impossible, or the jumping route would cross fragile furniture.",
+      "specs": [
+        {"label": "Height", "value": "54 in"},
+        {"label": "Footprint", "value": "19.5 × 19.5 in"},
+        {"label": "Official capacity", "value": "44 lb total"},
+        {"label": "Surfaces", "value": "Plush and sisal"}
+      ],
+      "buyingChecks": [
+        "Compare every usable perch and condo opening with your cat, not only the outside dimensions.",
+        "Identify a wall-stud or manufacturer-approved anchoring location before ordering.",
+        "Map a safe route up and down for the least agile cat using it."
+      ],
+      "cautions": [
+        "Use the supplied wall safety strap according to the current instructions.",
+        "Retighten hardware after initial use and during routine inspections.",
+        "Use the manufacturer’s 44-pound total capacity for this model rather than conflicting marketplace copy."
+      ],
+      "maintenance": "Vacuum plush, trim only loose surface fibers that can be removed safely, inspect sisal and hardware, and retighten every level on a regular schedule.",
+      "manufacturerUrl": "https://yaheetech.shop/products/yaheetech-54-inch-cat-tree",
+      "manufacturerLabel": "Yaheetech model page",
+      "amazonUs": "https://www.amazon.com/dp/B0794T79KM",
+      "amazonCa": "https://www.amazon.ca/s?k=B0794T79KM",
+      "asinUs": "B0794T79KM",
+      "relatedGuide": "/guides/small-apartment-cat-setup/",
+      "relatedGuideLabel": "Small-apartment setup guide"
+    },
+    {
+      "slug": "amazon-basics-22-inch-cat-tree",
+      "category": "cat-trees-small-spaces",
+      "categoryName": "Cat trees for small spaces",
+      "brand": "Amazon Basics",
+      "name": "Multi-Platform Cat Tree",
+      "model": "SGS65",
+      "variant": "22-inch; manufacturer part ZJS-19212",
+      "format": "Low compact perch",
+      "pickLabel": "Low-profile compact option",
+      "shortAnswer": "A short multi-platform perch for homes prioritizing a small footprint and modest step height over maximum climbing height.",
+      "summary": "At 22 inches high, this is better understood as a compact perch and scratching station than a full vertical-territory tower.",
+      "bestFor": "Kittens, small-to-medium cats, low windows, and cats suited to its lower step heights after individual mobility is confirmed.",
+      "skipIf": "Your cat needs a high refuge, the listed 18-by-14-inch footprint is still too large, or carpeted surfaces conflict with the cat’s scratching preferences.",
+      "specs": [
+        {"label": "Nominal height", "value": "22 in"},
+        {"label": "Nominal footprint", "value": "18 × 14 in"},
+        {"label": "Listed fit", "value": "1–2 small/medium cats"},
+        {"label": "Care", "value": "Spot clean"}
+      ],
+      "buyingChecks": [
+        "Measure the top platform, not only the total product size.",
+        "Compare step heights with the cat’s current mobility.",
+        "Place it where the cat gains a useful view without creating a fall route."
+      ],
+      "cautions": [
+        "Confirm the exact 22-inch variant and current stated weight guidance.",
+        "Inspect the jute, carpet, platforms, and assembly hardware regularly.",
+        "Do not treat a low perch as a complete substitute for other safe vertical territory."
+      ],
+      "maintenance": "Spot clean according to the current listing, vacuum hair and loose fibers, and retighten the assembly hardware as needed.",
+      "manufacturerUrl": "https://www.amazon.com/dp/B07FW4NGJH",
+      "manufacturerLabel": "Amazon product and private-label record",
+      "amazonUs": "https://www.amazon.com/dp/B07FW4NGJH",
+      "amazonCa": "https://www.amazon.ca/s?k=B07FW4NGJH",
+      "asinUs": "B07FW4NGJH",
+      "relatedGuide": "/guides/small-apartment-cat-setup/",
+      "relatedGuideLabel": "Small-apartment setup guide"
+    }
+  ]
+}

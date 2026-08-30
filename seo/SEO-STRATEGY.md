@@ -99,7 +99,7 @@ Build supporting coverage around fountain cleaning, filter availability and annu
 
 ### 4. Play, scratching, and enrichment
 
-**Existing owners:** `/guides/indoor-cat-enrichment/` and `/guides/scratching-post-placement/`
+**Existing owners:** `/guides/indoor-cat-enrichment/`, `/guides/scratching-post-placement/`, `/gear/cat-toys/`, and `/gear/scratching-posts/`
 
 Build support around scratcher orientation, toy rotation, hunting-style play routines, window enrichment, nighttime activity, quiet exercise equipment, and compact climbing options. Recommendations should account for individual preference rather than implying one product works for every cat.
 
@@ -111,7 +111,7 @@ Build durable informational coverage on carrier sizing, carrier acclimation, eme
 
 ### Commercial layer
 
-`/gear/` is a dated **Marketplace Watch**, not a test winner page. As evidence accumulates, create category buying guides before single-product reviews. A category guide must define selection criteria and practical trade-offs; a hands-on review must follow the published methodology and contain original evidence.
+`/gear/` is a research hub containing dated **Marketplace Watch** sections and category-level Research Shortlists; it is not a test-winner page. The toy, scratcher, and small-space cat-tree shortlists lead to exact product records that state fit, skip criteria, cautions, maintenance, source dates, and evidence limits before retailer links. Broader category buying guides should follow the same structure. A hands-on review must follow the published methodology and contain original evidence.
 
 Do not create Product, Review, AggregateRating, or “best” claims merely to seek a rich result. Structured data and labels must describe the content that actually exists.
 

@@ -24,6 +24,11 @@ jobs:
           node-version: 24
           package-manager-cache: false
 
+      - name: Verify generated product catalogue is current
+        run: |
+          node scripts/build-product-catalog.mjs
+          git diff --exit-code -- gear/cat-toys gear/scratching-posts gear/cat-trees-small-spaces gear/products
+
       - name: Validate SEO, links, schema, and sitemap parity
         run: node scripts/seo-audit.mjs
 
