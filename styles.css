@@ -16,6 +16,11 @@
   --shadow-hover: 0 1px 0 rgba(255, 255, 255, 0.11) inset, 0 28px 58px rgba(0, 0, 0, 0.46), 0 0 34px rgba(34, 211, 238, 0.08);
   --panel-gradient: linear-gradient(145deg, rgba(19, 29, 52, 0.98), rgba(7, 11, 25, 0.98));
   --edge-highlight: linear-gradient(90deg, rgba(34, 211, 238, 0.7), rgba(249, 115, 22, 0.62));
+  --shop-bg: #f7f4ec;
+  --shop-card: #ffffff;
+  --shop-ink: #111827;
+  --shop-muted: #64748b;
+  --shop-line: #dbe2e8;
   --radius-sm: 0.85rem;
   --radius-md: 1.5rem;
   --radius-lg: 2rem;
@@ -300,9 +305,9 @@ h3 {
   isolation: isolate;
   background-color: #020611;
   background-image:
-    linear-gradient(90deg, rgba(2, 6, 17, 0.02) 0%, rgba(2, 6, 17, 0.04) 34%, rgba(2, 6, 17, 0.38) 51%, rgba(2, 6, 17, 0.84) 72%, rgba(2, 6, 17, 0.98) 100%),
-    linear-gradient(180deg, rgba(5, 8, 22, 0.02) 0%, transparent 58%, rgba(5, 8, 22, 0.92) 100%),
-    url("/assets/splintercat-tiger-hero-v3.jpg");
+    linear-gradient(90deg, rgba(2, 6, 17, 0.96) 0%, rgba(2, 6, 17, 0.88) 36%, rgba(2, 6, 17, 0.46) 57%, rgba(2, 6, 17, 0.05) 78%),
+    linear-gradient(180deg, rgba(5, 8, 22, 0.08) 0%, transparent 58%, rgba(5, 8, 22, 0.72) 100%),
+    url("/assets/tiger-temple-hero-v1.jpg");
   background-position: center;
   background-size: cover;
   perspective: 1200px;
@@ -326,8 +331,8 @@ h3 {
   z-index: 0;
   inset: 0;
   background:
-    linear-gradient(90deg, transparent 42%, rgba(2, 6, 17, 0.12) 58%, rgba(2, 6, 17, 0.5) 100%),
-    radial-gradient(ellipse at 76% 50%, rgba(34, 211, 238, 0.055), transparent 62%);
+    linear-gradient(90deg, rgba(2, 6, 17, 0.18), transparent 54%),
+    radial-gradient(ellipse at 72% 50%, rgba(249, 115, 22, 0.075), transparent 62%);
   pointer-events: none;
   content: "";
 }
@@ -338,13 +343,13 @@ h3 {
   display: grid;
   min-height: min(820px, calc(100vh - 4.5rem));
   align-items: center;
-  grid-template-columns: minmax(0, 0.88fr) minmax(24rem, 1.12fr);
+  grid-template-columns: minmax(24rem, 1.08fr) minmax(0, 0.92fr);
   gap: clamp(2rem, 6vw, 6rem);
   padding-block: clamp(4.25rem, 9vw, 8rem);
 }
 
 .hero-copy {
-  grid-column: 2;
+  grid-column: 1;
   max-width: 46rem;
   padding: clamp(1.35rem, 3vw, 2.25rem);
   background: linear-gradient(145deg, rgba(8, 15, 34, 0.62), rgba(4, 8, 20, 0.2));
@@ -352,7 +357,7 @@ h3 {
   border-radius: var(--radius-lg);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset, 0 28px 80px rgba(0, 0, 0, 0.38), -18px 0 70px rgba(2, 6, 23, 0.3);
   backdrop-filter: blur(8px);
-  transform: perspective(1100px) rotateY(-1.6deg) translateZ(0);
+  transform: perspective(1100px) rotateY(1.6deg) translateZ(0);
 }
 
 .hero .eyebrow {
@@ -678,6 +683,42 @@ h3 {
   gap: 1rem;
 }
 
+.shop-section {
+  color: var(--shop-ink);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(249, 115, 22, 0.09), transparent 28rem),
+    var(--shop-bg);
+}
+
+.shop-section h2,
+.shop-section h3 {
+  color: var(--shop-ink);
+}
+
+.shop-section .lede,
+.shop-section .category-card p {
+  color: var(--shop-muted);
+}
+
+.shop-section .eyebrow,
+.shop-section .text-link,
+.shop-section .card-status {
+  color: #0e7490;
+}
+
+.shop-section .category-card {
+  color: var(--shop-ink);
+  background: var(--shop-card);
+  border-color: var(--shop-line);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.1), 0 2px 8px rgba(15, 23, 42, 0.06);
+}
+
+.shop-section .category-card:hover {
+  color: var(--shop-ink);
+  border-color: rgba(14, 116, 144, 0.48);
+  box-shadow: 0 24px 55px rgba(15, 23, 42, 0.15), 0 0 0 1px rgba(249, 115, 22, 0.12);
+}
+
 .category-card,
 .info-card {
   position: relative;
@@ -731,6 +772,39 @@ h3 {
   transform: scale(1.35);
 }
 
+.category-card-visual {
+  padding-top: 0;
+}
+
+.category-image {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  margin: 0 -1.5rem 1.25rem;
+  background: #e7e1d6;
+}
+
+.category-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 420ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.category-card-visual:hover .category-image img {
+  transform: scale(1.035);
+}
+
+.category-card-visual .category-icon {
+  position: relative;
+  z-index: 2;
+  margin-top: -2.8rem;
+  background: #07101f;
+  border: 3px solid var(--shop-card);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.18);
+}
+
 .category-icon {
   display: grid;
   width: 3rem;
@@ -774,7 +848,7 @@ h3 {
     linear-gradient(90deg, #050816 0%, rgba(5, 8, 22, 0.94) 48%, rgba(5, 8, 22, 0.5) 100%),
     radial-gradient(circle at 82% 18%, rgba(34, 211, 238, 0.13), transparent 30rem),
     radial-gradient(circle at 18% 78%, rgba(249, 115, 22, 0.1), transparent 26rem),
-    url("/assets/splintercat-tiger-hero-v3.jpg") 88% 43% / min(62rem, 70vw) auto no-repeat,
+    url("/assets/tiger-temple-hero-v1.jpg") 88% 43% / min(62rem, 70vw) auto no-repeat,
     #050816;
 }
 
@@ -862,6 +936,36 @@ h3 {
 
 .product-section {
   scroll-margin-top: 5.5rem;
+  color: var(--shop-ink);
+  background: var(--shop-bg);
+  border-bottom: 1px solid var(--shop-line);
+}
+
+.product-section h2,
+.product-section h3,
+.product-section h4 {
+  color: var(--shop-ink);
+}
+
+.product-section .lede,
+.product-section .watchlist-updated,
+.product-section .market-source,
+.product-section .market-source a {
+  color: var(--shop-muted);
+}
+
+.product-section .lede {
+  color: #475569;
+}
+
+.product-section .eyebrow,
+.product-section .product-code {
+  color: #0e7490;
+}
+
+.product-section .content-label {
+  color: #075985;
+  background: #cffafe;
 }
 
 .product-grid {
@@ -881,19 +985,19 @@ h3 {
   min-width: 0;
   padding: 1.5rem;
   flex-direction: column;
-  color: var(--ink);
+  color: var(--shop-ink);
   background:
-    linear-gradient(145deg, rgba(34, 211, 238, 0.035), transparent 42%),
-    var(--panel-gradient);
-  border: 1px solid var(--line);
+    linear-gradient(145deg, rgba(34, 211, 238, 0.045), transparent 42%),
+    var(--shop-card);
+  border: 1px solid var(--shop-line);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-raised);
+  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.09), 0 2px 8px rgba(15, 23, 42, 0.05);
   transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 
 .product-card:hover {
   border-color: rgba(34, 211, 238, 0.65);
-  box-shadow: var(--shadow-hover);
+  box-shadow: 0 24px 54px rgba(15, 23, 42, 0.15), 0 0 0 1px rgba(34, 211, 238, 0.16);
   transform: translateY(-6px);
 }
 
@@ -921,7 +1025,7 @@ h3 {
 
 .product-card h4 {
   margin: 1.25rem 0 0.55rem;
-  color: #e2e8f0;
+  color: #334155;
   font-size: 0.78rem;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -929,7 +1033,7 @@ h3 {
 
 .product-summary {
   margin: 0;
-  color: var(--ink-soft);
+  color: var(--shop-muted);
   font-size: 0.95rem;
 }
 
@@ -938,27 +1042,27 @@ h3 {
   gap: 0.35rem;
   margin-top: 1.2rem;
   padding: 0.9rem 1rem;
-  background: rgba(34, 211, 238, 0.055);
-  border: 1px solid rgba(34, 211, 238, 0.13);
+  background: #ecfeff;
+  border: 1px solid #bae6fd;
   border-radius: var(--radius-sm);
 }
 
 .product-fit strong {
-  color: #a5f3fc;
+  color: #0e7490;
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .product-fit span {
-  color: #cbd5e1;
+  color: #334155;
   font-size: 0.88rem;
 }
 
 .product-checks {
   margin: 0 0 1.4rem;
   padding-left: 1.2rem;
-  color: #cbd5e1;
+  color: #475569;
   font-size: 0.88rem;
 }
 
@@ -1024,6 +1128,25 @@ h3 {
     rgba(2, 6, 23, 0.5);
   background-size: 28px 28px;
   box-shadow: 20px 0 50px rgba(0, 0, 0, 0.28) inset;
+}
+
+.feature-tiger {
+  position: relative;
+  overflow: hidden;
+  background: #020617;
+}
+
+.feature-tiger::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(8, 47, 73, 0.62), transparent 38%);
+  content: "";
+}
+
+.feature-tiger img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .room-plan {
@@ -1169,6 +1292,30 @@ h3 {
   gap: clamp(2.5rem, 7vw, 7rem);
 }
 
+.story-tiger {
+  position: relative;
+  overflow: hidden;
+  width: min(100%, 25rem);
+  aspect-ratio: 4 / 5;
+  margin-inline: auto;
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  border-radius: 45% 45% var(--radius-lg) var(--radius-lg);
+  box-shadow: 0 28px 65px rgba(0, 0, 0, 0.42), 1.2rem 1.2rem 0 rgba(249, 115, 22, 0.08);
+}
+
+.story-tiger::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 62%, rgba(2, 6, 23, 0.62));
+  content: "";
+}
+
+.story-tiger img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .rings {
   position: relative;
   display: grid;
@@ -1226,7 +1373,7 @@ h3 {
     linear-gradient(90deg, #0b1020 0%, rgba(11, 16, 32, 0.96) 48%, rgba(11, 16, 32, 0.58) 100%),
     radial-gradient(circle at 84% 12%, rgba(34, 211, 238, 0.13), transparent 30%),
     radial-gradient(circle at 12% 100%, rgba(249, 115, 22, 0.08), transparent 28%),
-    url("/assets/splintercat-tiger-hero-v3.jpg") 86% 42% / min(62rem, 70vw) auto no-repeat,
+    url("/assets/tiger-temple-hero-v1.jpg") 86% 42% / min(62rem, 70vw) auto no-repeat,
     #0b1020;
   border-bottom: 1px solid var(--line);
 }
@@ -1634,10 +1781,10 @@ h3 {
 
   .hero {
     background-image:
-      linear-gradient(90deg, rgba(3, 7, 17, 0.64), rgba(3, 7, 17, 0.28) 48%, rgba(3, 7, 17, 0.62)),
+      linear-gradient(90deg, rgba(3, 7, 17, 0.72), rgba(3, 7, 17, 0.32) 48%, rgba(3, 7, 17, 0.38)),
       linear-gradient(180deg, rgba(5, 8, 22, 0.2), rgba(5, 8, 22, 0.55) 62%, rgba(5, 8, 22, 0.9)),
-      url("/assets/splintercat-tiger-hero-v3.jpg");
-    background-position: 34% center;
+      url("/assets/tiger-temple-hero-v1.jpg");
+    background-position: 68% center;
   }
 
   .hero-visual {
@@ -1707,7 +1854,7 @@ h3 {
   }
 
   .hero {
-    background-position: center, center, 35% top;
+    background-position: center, center, 68% top;
     background-repeat: no-repeat;
     background-size: 100% 100%, 100% 100%, auto 430px;
   }
