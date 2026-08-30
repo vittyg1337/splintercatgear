@@ -81,7 +81,7 @@ For every indexable page:
 - [x] `index,follow,max-image-preview:large` where appropriate.
 - [x] Open Graph type, site name, title, description, canonical URL, and relevant owned image.
 - [x] Twitter/X summary-card metadata where a social image exists.
-- [x] Social image resolves over HTTPS, has the correct dimensions/type, and does not contain misleading product claims.
+- [ ] Social image resolves over HTTPS, has the correct dimensions/type, and does not contain misleading product claims. The asset and metadata are present; live HTTPS verification remains blocked by certificate issuance.
 - [x] Favicon and web manifest resolve correctly.
 - [x] No duplicate IDs; heading order and landmarks remain accessible.
 - [x] Every image has appropriate `alt`, explicit `width`/`height`, and useful nearby text.
