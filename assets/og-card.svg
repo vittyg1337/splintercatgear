@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Splintercat — Practical guides for legendary house cats</title>
+  <desc id="desc">Splintercat wordmark beside an angular cyan cat emblem on a cinematic midnight background.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#050816"/><stop offset=".62" stop-color="#0b1020"/><stop offset="1" stop-color="#082f49"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#22d3ee" stop-opacity=".16"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <circle cx="1000" cy="315" r="305" fill="url(#glow)"/>
+  <path d="M0 0h1200v16H0z" fill="#22d3ee"/>
+  <path d="M0 614h1200v16H0z" fill="#f97316"/>
+  <g opacity=".24" fill="none" stroke="#22d3ee" stroke-width="4">
+    <circle cx="1030" cy="315" r="232"/><circle cx="1030" cy="315" r="188"/><circle cx="1030" cy="315" r="144"/><circle cx="1030" cy="315" r="100"/>
+  </g>
+  <g transform="translate(820 105) scale(4.4)">
+    <path d="M14 71c10-7 14-19 14-35M8 58c12-4 20-14 24-29M82 71c-10-7-14-19-14-35M88 58C76 54 68 44 64 29" fill="none" stroke="#f97316" stroke-width="5" stroke-linecap="round"/>
+    <path d="m26 72-4-43 18 13 8-22 8 22 18-13-4 43c-7 8-14 12-22 12s-15-4-22-12Z" fill="#082f49" stroke="#22d3ee" stroke-width="2" stroke-linejoin="round"/>
+    <path d="m39 58 9 7 9-7-4 13H43l-4-13Z" fill="#f8fafc"/>
+    <path d="M35 52h6M55 52h6" stroke="#67e8f9" stroke-width="4" stroke-linecap="round"/>
+    <path d="M48 27v27l-4-6m4 6 5-8" fill="none" stroke="#f59e0b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="86" y="215" fill="#f8fafc" font-family="Arial, Helvetica, sans-serif" font-size="88" font-weight="900" letter-spacing="-5">SPLINTERCAT</text>
+  <text x="91" y="280" fill="#67e8f9" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="800" letter-spacing="6">INDOOR CAT GEAR, WITHOUT THE HYPE</text>
+  <text x="88" y="390" fill="#f8fafc" font-family="Arial, Helvetica, sans-serif" font-size="50" font-weight="900" letter-spacing="-2">PRACTICAL GUIDES FOR</text>
+  <text x="88" y="448" fill="#22d3ee" font-family="Arial, Helvetica, sans-serif" font-size="50" font-weight="900" letter-spacing="-2">LEGENDARY HOUSE CATS.</text>
+  <text x="91" y="545" fill="#94a3b8" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" letter-spacing="3">SPLINTERCATGEAR.COM</text>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title id="title">Splintercat</title>
+  <desc id="desc">An angular cyan cat face framed by warm wood splinters on midnight blue.</desc>
+  <rect width="96" height="96" rx="24" fill="#050816"/>
+  <path d="M14 71c10-7 14-19 14-35M8 58c12-4 20-14 24-29M82 71c-10-7-14-19-14-35M88 58C76 54 68 44 64 29" fill="none" stroke="#f97316" stroke-width="5" stroke-linecap="round"/>
+  <path d="m26 72-4-43 18 13 8-22 8 22 18-13-4 43c-7 8-14 12-22 12s-15-4-22-12Z" fill="#082f49" stroke="#22d3ee" stroke-width="2" stroke-linejoin="round"/>
+  <path d="m39 58 9 7 9-7-4 13H43l-4-13Z" fill="#f8fafc"/>
+  <path d="M35 52h6M55 52h6" stroke="#67e8f9" stroke-width="4" stroke-linecap="round"/>
+  <path d="M48 27v27l-4-6m4 6 5-8" fill="none" stroke="#f59e0b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
