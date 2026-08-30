@@ -12,6 +12,10 @@
   --line: rgba(255, 255, 255, 0.1);
   --white: #ffffff;
   --shadow: 0 24px 70px rgba(0, 0, 0, 0.26);
+  --shadow-raised: 0 1px 0 rgba(255, 255, 255, 0.08) inset, 0 -1px 0 rgba(0, 0, 0, 0.5) inset, 0 18px 42px rgba(0, 0, 0, 0.34), 0 4px 12px rgba(0, 0, 0, 0.34);
+  --shadow-hover: 0 1px 0 rgba(255, 255, 255, 0.11) inset, 0 28px 58px rgba(0, 0, 0, 0.46), 0 0 34px rgba(34, 211, 238, 0.08);
+  --panel-gradient: linear-gradient(145deg, rgba(19, 29, 52, 0.98), rgba(7, 11, 25, 0.98));
+  --edge-highlight: linear-gradient(90deg, rgba(34, 211, 238, 0.7), rgba(249, 115, 22, 0.62));
   --radius-sm: 0.85rem;
   --radius-md: 1.5rem;
   --radius-lg: 2rem;
@@ -113,8 +117,9 @@ a {
   z-index: 1000;
   top: 0;
   border-bottom: 1px solid var(--line);
-  background: rgba(5, 8, 22, 0.95);
+  background: linear-gradient(180deg, rgba(7, 11, 26, 0.94), rgba(3, 6, 17, 0.88));
   backdrop-filter: blur(24px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
 }
 
 .nav-wrap {
@@ -178,7 +183,10 @@ a {
   margin-left: 0.45rem;
   padding-inline: 1.15rem;
   color: #020617;
-  background: var(--spruce);
+  background: linear-gradient(180deg, #67e8f9, var(--spruce));
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.52) inset, 0 7px 0 #0e7490, 0 12px 24px rgba(6, 182, 212, 0.2);
+  transform: translateY(-3px);
   font-size: 0.7rem;
   font-weight: 900;
   letter-spacing: 0.12em;
@@ -188,6 +196,8 @@ a {
 .nav-list .nav-cta:hover {
   color: #020617;
   background: #67e8f9;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.58) inset, 0 4px 0 #0e7490, 0 9px 20px rgba(6, 182, 212, 0.24);
+  transform: translateY(0);
 }
 
 .menu-button {
@@ -287,19 +297,37 @@ h3 {
   position: relative;
   overflow: hidden;
   border-bottom: 1px solid var(--line);
+  isolation: isolate;
+  background-color: #020611;
   background-image:
-    linear-gradient(90deg, rgba(3, 7, 17, 0.02) 0%, rgba(3, 7, 17, 0.08) 34%, rgba(3, 7, 17, 0.28) 52%, rgba(3, 7, 17, 0.64) 74%, rgba(3, 7, 17, 0.82) 100%),
-    linear-gradient(180deg, rgba(5, 8, 22, 0.08) 0%, transparent 62%, rgba(5, 8, 22, 0.78) 100%),
-    url("/assets/splintercat-forest-hero-v1.jpg");
+    linear-gradient(90deg, rgba(2, 6, 17, 0.02) 0%, rgba(2, 6, 17, 0.04) 34%, rgba(2, 6, 17, 0.38) 51%, rgba(2, 6, 17, 0.84) 72%, rgba(2, 6, 17, 0.98) 100%),
+    linear-gradient(180deg, rgba(5, 8, 22, 0.02) 0%, transparent 58%, rgba(5, 8, 22, 0.92) 100%),
+    url("/assets/splintercat-tiger-hero-v3.jpg");
   background-position: center;
   background-size: cover;
+  perspective: 1200px;
+}
+
+.hero::before {
+  position: absolute;
+  z-index: 0;
+  top: 8%;
+  right: 7%;
+  width: min(45rem, 52vw);
+  height: min(45rem, 70vh);
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.12), rgba(7, 14, 32, 0.05) 42%, transparent 70%);
+  filter: blur(8px);
+  pointer-events: none;
+  content: "";
 }
 
 .hero::after {
   position: absolute;
   z-index: 0;
   inset: 0;
-  background: radial-gradient(ellipse at 75% 50%, rgba(5, 8, 22, 0.18), transparent 68%);
+  background:
+    linear-gradient(90deg, transparent 42%, rgba(2, 6, 17, 0.12) 58%, rgba(2, 6, 17, 0.5) 100%),
+    radial-gradient(ellipse at 76% 50%, rgba(34, 211, 238, 0.055), transparent 62%);
   pointer-events: none;
   content: "";
 }
@@ -318,9 +346,13 @@ h3 {
 .hero-copy {
   grid-column: 2;
   max-width: 46rem;
-  padding: 1rem;
-  background: radial-gradient(ellipse at center, rgba(5, 8, 22, 0.44), rgba(5, 8, 22, 0.18) 46%, transparent 76%);
-  filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.78));
+  padding: clamp(1.35rem, 3vw, 2.25rem);
+  background: linear-gradient(145deg, rgba(8, 15, 34, 0.62), rgba(4, 8, 20, 0.2));
+  border: 1px solid rgba(103, 232, 249, 0.12);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset, 0 28px 80px rgba(0, 0, 0, 0.38), -18px 0 70px rgba(2, 6, 23, 0.3);
+  backdrop-filter: blur(8px);
+  transform: perspective(1100px) rotateY(-1.6deg) translateZ(0);
 }
 
 .hero .eyebrow {
@@ -330,6 +362,7 @@ h3 {
   border: 1px solid rgba(34, 211, 238, 0.4);
   border-radius: 999px;
   background: rgba(34, 211, 238, 0.1);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset, 0 8px 26px rgba(34, 211, 238, 0.08);
   color: #a5f3fc;
   font-size: 0.64rem;
 }
@@ -350,7 +383,7 @@ h3 {
   gap: 0.55rem;
   padding: 0.85rem 1.45rem;
   color: #020617;
-  background: var(--spruce);
+  background: linear-gradient(180deg, #67e8f9 0%, var(--spruce) 52%, #06b6d4 100%);
   border: 1px solid var(--spruce);
   border-radius: 999px;
   font-size: 0.76rem;
@@ -359,6 +392,8 @@ h3 {
   line-height: 1.2;
   text-decoration: none;
   text-transform: uppercase;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.58) inset, 0 6px 0 #0e7490, 0 14px 28px rgba(6, 182, 212, 0.18);
+  transform: translateY(-3px);
   transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
 }
 
@@ -366,20 +401,22 @@ h3 {
   color: #020617;
   background: #67e8f9;
   border-color: #67e8f9;
-  box-shadow: none;
-  transform: translateY(-2px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.62) inset, 0 3px 0 #0e7490, 0 10px 24px rgba(6, 182, 212, 0.24);
+  transform: translateY(0);
 }
 
 .button.secondary {
   color: var(--ink);
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset, 0 5px 0 #020617, 0 12px 26px rgba(0, 0, 0, 0.25);
 }
 
 .button.secondary:hover {
   color: var(--white);
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(103, 232, 249, 0.65);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.16) inset, 0 2px 0 #020617, 0 8px 18px rgba(0, 0, 0, 0.28);
 }
 
 .button.light {
@@ -542,8 +579,11 @@ h3 {
 }
 
 .trust-bar {
-  background: #0b1020;
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(180deg, #111a30, #080d1b);
   border-bottom: 1px solid var(--line);
+  box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.05) inset, 0 18px 38px rgba(0, 0, 0, 0.28);
 }
 
 .trust-grid {
@@ -630,9 +670,10 @@ h3 {
   overflow: hidden;
   padding: 1.5rem;
   color: var(--ink);
-  background: #0b1020;
+  background: var(--panel-gradient);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
+  box-shadow: var(--shadow-raised);
   text-decoration: none;
   transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
@@ -641,8 +682,8 @@ h3 {
 .info-card:hover {
   color: var(--ink);
   border-color: var(--spruce);
-  box-shadow: none;
-  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-6px);
 }
 
 .category-card::after {
@@ -810,15 +851,17 @@ h3 {
   color: var(--ink);
   background:
     linear-gradient(145deg, rgba(34, 211, 238, 0.035), transparent 42%),
-    #0b1020;
+    var(--panel-gradient);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
-  transition: border-color 160ms ease, transform 160ms ease;
+  box-shadow: var(--shadow-raised);
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 
 .product-card:hover {
   border-color: rgba(34, 211, 238, 0.65);
-  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-6px);
 }
 
 .product-card-top {
@@ -925,6 +968,7 @@ h3 {
   background: linear-gradient(115deg, rgba(8, 47, 73, 0.95), rgba(67, 20, 7, 0.8));
   border: 1px solid rgba(34, 211, 238, 0.28);
   border-radius: var(--radius-lg);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset, 0 30px 70px rgba(0, 0, 0, 0.38), 0 0 48px rgba(34, 211, 238, 0.06);
   grid-template-columns: 1fr 0.95fr;
 }
 
@@ -946,6 +990,7 @@ h3 {
     linear-gradient(90deg, rgba(103, 232, 249, 0.08) 1px, transparent 1px),
     rgba(2, 6, 23, 0.5);
   background-size: 28px 28px;
+  box-shadow: 20px 0 50px rgba(0, 0, 0, 0.28) inset;
 }
 
 .room-plan {
@@ -1008,9 +1053,10 @@ h3 {
 
 .step-card {
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.04);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
+  box-shadow: var(--shadow-raised);
   counter-increment: steps;
 }
 
@@ -1045,9 +1091,10 @@ h3 {
 
 .label-card {
   padding: 1.5rem;
-  background: #0b1020;
+  background: var(--panel-gradient);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
+  box-shadow: var(--shadow-raised);
 }
 
 .content-label {
@@ -1121,6 +1168,7 @@ h3 {
   border-color: rgba(34, 211, 238, 0.28);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1) inset, 0 26px 60px rgba(0, 0, 0, 0.36);
 }
 
 .launch-note h2 {
@@ -1226,9 +1274,10 @@ h3 {
   position: sticky;
   top: 7rem;
   padding: 1.25rem;
-  background: #0b1020;
+  background: var(--panel-gradient);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
+  box-shadow: var(--shadow-raised);
 }
 
 .toc strong {
@@ -1264,9 +1313,10 @@ h3 {
   max-width: 48rem;
   margin-block: 2rem;
   padding: 1.35rem 1.5rem;
-  background: #0b1020;
+  background: var(--panel-gradient);
   border-left: 5px solid var(--orange);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  box-shadow: var(--shadow-raised);
 }
 
 .callout strong {
@@ -1290,7 +1340,7 @@ h3 {
   position: relative;
   margin: 0;
   padding: 1rem 1rem 1rem 3.2rem;
-  background: #0b1020;
+  background: var(--panel-gradient);
   border: 1px solid var(--line);
 }
 
@@ -1339,9 +1389,10 @@ h3 {
 .policy-card {
   min-width: 0;
   padding: 1.5rem;
-  background: #0b1020;
+  background: var(--panel-gradient);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
+  box-shadow: var(--shadow-raised);
 }
 
 .policy-card a[href^="mailto:"] {
@@ -1517,15 +1568,16 @@ h3 {
   .hero-copy {
     grid-column: 1;
     max-width: 42rem;
-    padding: 0;
+    padding: clamp(1.25rem, 5vw, 2rem);
+    transform: none;
   }
 
   .hero {
     background-image:
       linear-gradient(90deg, rgba(3, 7, 17, 0.64), rgba(3, 7, 17, 0.28) 48%, rgba(3, 7, 17, 0.62)),
       linear-gradient(180deg, rgba(5, 8, 22, 0.2), rgba(5, 8, 22, 0.55) 62%, rgba(5, 8, 22, 0.9)),
-      url("/assets/splintercat-forest-hero-v1.jpg");
-    background-position: 30% center;
+      url("/assets/splintercat-tiger-hero-v3.jpg");
+    background-position: 34% center;
   }
 
   .hero-visual {
@@ -1592,6 +1644,19 @@ h3 {
   .hero-grid {
     padding-top: 4.5rem;
     padding-bottom: 3.5rem;
+  }
+
+  .hero {
+    background-position: center, center, 35% top;
+    background-repeat: no-repeat;
+    background-size: 100% 100%, 100% 100%, auto 430px;
+  }
+
+  .hero-copy {
+    margin-top: 12rem;
+    border-color: rgba(103, 232, 249, 0.16);
+    background: linear-gradient(145deg, rgba(4, 9, 24, 0.76), rgba(3, 7, 18, 0.48));
+    backdrop-filter: blur(5px);
   }
 
   .hero-actions .button,
@@ -1714,6 +1779,15 @@ h3 {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .hero-copy,
+  .button,
+  .nav-list .nav-cta,
+  .category-card,
+  .info-card,
+  .product-card {
+    transform: none !important;
   }
 }
 
