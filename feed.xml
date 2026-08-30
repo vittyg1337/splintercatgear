@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Splintercat Indoor Cat Guides</title>
+    <link>https://splintercatgear.com/guides/</link>
+    <description>Evidence-informed indoor-cat setup, enrichment, litter, scratching, feeding, and small-space guides.</description>
+    <language>en-ca</language>
+    <lastBuildDate>Sun, 30 Aug 2026 12:00:00 -0400</lastBuildDate>
+    <atom:link href="https://splintercatgear.com/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Small Apartment Cat Setup: Room-by-Room Plan</title>
+      <link>https://splintercatgear.com/guides/small-apartment-cat-setup/</link>
+      <guid isPermaLink="true">https://splintercatgear.com/guides/small-apartment-cat-setup/</guid>
+      <pubDate>Sun, 30 Aug 2026 12:00:00 -0400</pubDate>
+      <description>Plan vertical territory, separate resources, storage, routes, and a realistic indoor-cat routine when floor space is limited.</description>
+    </item>
+    <item>
+      <title>Where to Put a Litter Box in a Small Apartment</title>
+      <link>https://splintercatgear.com/guides/litter-box-placement/</link>
+      <guid isPermaLink="true">https://splintercatgear.com/guides/litter-box-placement/</guid>
+      <pubDate>Sun, 30 Aug 2026 12:00:00 -0400</pubDate>
+      <description>Choose accessible, quiet litter-box locations while protecting privacy, cleaning access, observation, and separation from food and water.</description>
+    </item>
+    <item>
+      <title>Where to Put a Cat Scratching Post</title>
+      <link>https://splintercatgear.com/guides/scratching-post-placement/</link>
+      <guid isPermaLink="true">https://splintercatgear.com/guides/scratching-post-placement/</guid>
+      <pubDate>Sun, 30 Aug 2026 12:00:00 -0400</pubDate>
+      <description>Match scratching-post position, orientation, surface, reach, and stability to the behaviour already happening in your home.</description>
+    </item>
+    <item>
+      <title>Cat Food and Water Station Setup Guide</title>
+      <link>https://splintercatgear.com/guides/food-water-station/</link>
+      <guid isPermaLink="true">https://splintercatgear.com/guides/food-water-station/</guid>
+      <pubDate>Sun, 30 Aug 2026 12:00:00 -0400</pubDate>
+      <description>Plan separate, clean, accessible food and water stations for single- and multi-cat homes before comparing bowls, fountains, or feeders.</description>
+    </item>
+    <item>
+      <title>Indoor Cat Enrichment Ideas for Apartments</title>
+      <link>https://splintercatgear.com/guides/indoor-cat-enrichment/</link>
+      <guid isPermaLink="true">https://splintercatgear.com/guides/indoor-cat-enrichment/</guid>
+      <pubDate>Sun, 30 Aug 2026 12:00:00 -0400</pubDate>
+      <description>Build a sustainable enrichment routine around hunting-style play, scratching, climbing, foraging, retreat, and sensory choice.</description>
+    </item>
+    <item>
+      <title>How to Set Up Your Home for an Indoor Cat</title>
+      <link>https://splintercatgear.com/guides/indoor-cat-setup/</link>
+      <guid isPermaLink="true">https://splintercatgear.com/guides/indoor-cat-setup/</guid>
+      <pubDate>Sun, 30 Aug 2026 12:00:00 -0400</pubDate>
+      <description>A room-by-room framework for safe places, separated resources, scratching, climbing, play, and predictable indoor-cat routines.</description>
+    </item>
+  </channel>
+</rss>

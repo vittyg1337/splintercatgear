@@ -7,10 +7,12 @@ Production hosting: GitHub Pages from the `main` branch, with `splintercatgear.c
 ## What is included
 
 - Responsive, accessible homepage with an original SVG brand system and cinematic forest hero art
-- Guide hub and a sourced indoor-cat setup guide
+- Guide hub, a sourced indoor-cat setup pillar, and five intent-specific supporting guides
 - Transparent testing methodology and content labels
 - About, editorial, affiliate, privacy, accessibility, contact, and terms pages
-- Canonical metadata, Open Graph metadata, JSON-LD, `robots.txt`, and XML sitemap
+- Canonical metadata, Open Graph/Twitter metadata, JSON-LD, `robots.txt`, image-aware XML sitemap, and RSS feed
+- Responsive WebP image variants and original article visuals
+- A full organic-search package under `seo/` with keyword ownership, a 12-month calendar, measurement, and launch checklists
 - Custom 404 page and optional static-host security headers
 - Dated popular-gear marketplace watchlist with original buying checks
 
@@ -24,6 +26,26 @@ npx serve .
 
 Do not open the HTML files directly if you want absolute links such as `/guides/` to work.
 
+## Quality checks
+
+Run these before every release:
+
+```powershell
+node scripts/seo-audit.mjs
+node scripts/check-amazon-links.mjs
+npx --yes html-validate "**/*.html"
+```
+
+The SEO audit checks indexable metadata, canonical paths, JSON-LD parsing, image attributes, duplicate IDs, internal links and fragments, sitemap parity, and affiliate-link semantics. Use `node scripts/check-amazon-links.mjs --require-affiliate` only after approved Amazon Special Links and the required disclosures are in place.
+
+The organic-search operating documents are in [`seo/`](seo/):
+
+- `SEO-STRATEGY.md`
+- `KEYWORD-MAP.csv`
+- `CONTENT-CALENDAR.md`
+- `MEASUREMENT-PLAN.md`
+- `IMPLEMENTATION-CHECKLIST.md`
+
 ## Before public deployment
 
 1. Enable `hello@splintercatgear.com` as a working mailbox or forwarder.
@@ -31,7 +53,7 @@ Do not open the HTML files directly if you want absolute links such as `/guides/
 3. Replace or supplement the organizational Research Desk byline with a real, public author or qualified reviewer when ready.
 4. Confirm the production host returns a true HTTP 404 for `404.html`.
 5. Redirect HTTP and `www` to `https://splintercatgear.com/`.
-6. Verify the domain in Google Search Console and Bing Webmaster Tools, then submit `/sitemap.xml`.
+6. Verify the domain in Google Search Console and Bing Webmaster Tools, then submit `/sitemap.xml`. Follow the launch sequence in `seo/IMPLEMENTATION-CHECKLIST.md`.
 7. Add real social-profile URLs to structured data only after the accounts are claimed.
 8. Update the privacy and terms pages before adding analytics, forms, accounts, ads, or commerce.
 9. Ensure publication and sitemap dates match the actual public launch or revision date.

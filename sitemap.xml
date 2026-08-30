@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://splintercatgear.com/</loc><lastmod>2026-08-30</lastmod></url>
-  <url><loc>https://splintercatgear.com/guides/</loc><lastmod>2026-08-30</lastmod></url>
-  <url><loc>https://splintercatgear.com/gear/</loc><lastmod>2026-08-30</lastmod></url>
-  <url><loc>https://splintercatgear.com/guides/indoor-cat-setup/</loc><lastmod>2026-08-30</lastmod></url>
-  <url><loc>https://splintercatgear.com/methodology/</loc><lastmod>2026-08-30</lastmod></url>
-  <url><loc>https://splintercatgear.com/about/</loc><lastmod>2026-08-30</lastmod></url>
-  <url><loc>https://splintercatgear.com/editorial-policy/</loc><lastmod>2026-08-30</lastmod></url>
-  <url><loc>https://splintercatgear.com/affiliate-disclosure/</loc><lastmod>2026-08-30</lastmod></url>
-  <url><loc>https://splintercatgear.com/contact/</loc><lastmod>2026-08-30</lastmod></url>
-  <url><loc>https://splintercatgear.com/privacy/</loc><lastmod>2026-08-30</lastmod></url>
-  <url><loc>https://splintercatgear.com/accessibility/</loc><lastmod>2026-08-30</lastmod></url>
-  <url><loc>https://splintercatgear.com/terms/</loc><lastmod>2026-08-30</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url><loc>https://splintercatgear.com/</loc><lastmod>2026-08-30</lastmod><changefreq>weekly</changefreq><priority>1.0</priority><image:image><image:loc>https://splintercatgear.com/assets/tiger-temple-hero-v1.jpg</image:loc></image:image><image:image><image:loc>https://splintercatgear.com/assets/category-play-v1.jpg</image:loc></image:image><image:image><image:loc>https://splintercatgear.com/assets/category-dine-v1.jpg</image:loc></image:image><image:image><image:loc>https://splintercatgear.com/assets/category-rest-v1.jpg</image:loc></image:image></url>
+  <url><loc>https://splintercatgear.com/guides/</loc><lastmod>2026-08-30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://splintercatgear.com/guides/indoor-cat-setup/</loc><lastmod>2026-08-30</lastmod><changefreq>monthly</changefreq><priority>0.9</priority><image:image><image:loc>https://splintercatgear.com/assets/indoor-cat-setup-tiger-v1.jpg</image:loc></image:image></url>
+  <url><loc>https://splintercatgear.com/guides/small-apartment-cat-setup/</loc><lastmod>2026-08-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority><image:image><image:loc>https://splintercatgear.com/assets/small-apartment-cat-setup-v2.jpg</image:loc></image:image></url>
+  <url><loc>https://splintercatgear.com/guides/litter-box-placement/</loc><lastmod>2026-08-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority><image:image><image:loc>https://splintercatgear.com/assets/litter-box-placement-v1.jpg</image:loc></image:image></url>
+  <url><loc>https://splintercatgear.com/guides/scratching-post-placement/</loc><lastmod>2026-08-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://splintercatgear.com/guides/food-water-station/</loc><lastmod>2026-08-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority><image:image><image:loc>https://splintercatgear.com/assets/category-dine-v1.jpg</image:loc></image:image></url>
+  <url><loc>https://splintercatgear.com/guides/indoor-cat-enrichment/</loc><lastmod>2026-08-30</lastmod><changefreq>monthly</changefreq><priority>0.8</priority><image:image><image:loc>https://splintercatgear.com/assets/category-play-v1.jpg</image:loc></image:image></url>
+  <url><loc>https://splintercatgear.com/gear/</loc><lastmod>2026-08-30</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://splintercatgear.com/methodology/</loc><lastmod>2026-08-30</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://splintercatgear.com/about/</loc><lastmod>2026-08-30</lastmod><changefreq>yearly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://splintercatgear.com/editorial-policy/</loc><lastmod>2026-08-30</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://splintercatgear.com/affiliate-disclosure/</loc><lastmod>2026-08-30</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://splintercatgear.com/contact/</loc><lastmod>2026-08-30</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://splintercatgear.com/privacy/</loc><lastmod>2026-08-30</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://splintercatgear.com/accessibility/</loc><lastmod>2026-08-30</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://splintercatgear.com/terms/</loc><lastmod>2026-08-30</lastmod><changefreq>yearly</changefreq><priority>0.2</priority></url>
 </urlset>
