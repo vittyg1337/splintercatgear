@@ -1790,6 +1790,7 @@ h3 {
 
 .research-category-card img {
   width: 100%;
+  height: auto;
   aspect-ratio: 3 / 2;
   object-fit: cover;
   transition: transform 220ms ease;
@@ -1807,7 +1808,7 @@ h3 {
   flex-direction: column;
 }
 
-.research-category-card h2 {
+.research-category-card h3 {
   margin-block: 0.8rem 0.65rem;
   color: #0f172a;
   font-size: clamp(1.65rem, 2.5vw, 2.25rem);
@@ -2476,7 +2477,297 @@ h3 {
   font-size: clamp(2.2rem, 5vw, 4rem);
 }
 
+/* Gear hub visual refresh */
+.page-hero.gear-hero {
+  min-height: min(46rem, calc(100svh - 4.5rem));
+  display: grid;
+  align-items: center;
+  background:
+    linear-gradient(90deg, #040713 0%, rgba(4, 7, 19, 0.97) 43%, rgba(4, 7, 19, 0.56) 70%, rgba(4, 7, 19, 0.36) 100%),
+    linear-gradient(180deg, transparent 52%, rgba(5, 8, 22, 0.9) 100%),
+    radial-gradient(circle at 72% 32%, rgba(34, 211, 238, 0.14), transparent 24rem),
+    image-set(url("/assets/tiger-temple-hero-v1.webp") type("image/webp"), url("/assets/tiger-temple-hero-v1.jpg") type("image/jpeg")) 82% 45% / cover no-repeat,
+    #050816;
+}
+
+.gear-hero .container {
+  width: min(calc(100% - 2.25rem), var(--max-width));
+}
+
+.gear-hero h1 {
+  max-width: 49rem;
+  text-wrap: balance;
+}
+
+.gear-hero .lede {
+  max-width: 44rem;
+  color: #cbd5e1;
+}
+
+.gear-hero .eyebrow {
+  display: inline-flex;
+  padding: 0.42rem 0.76rem;
+  color: #a5f3fc;
+  background: rgba(8, 47, 73, 0.52);
+  border: 1px solid rgba(34, 211, 238, 0.42);
+  border-radius: 999px;
+}
+
+.catalog-section {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(34, 211, 238, 0.11), transparent 28rem),
+    radial-gradient(circle at 0% 100%, rgba(249, 115, 22, 0.08), transparent 24rem),
+    #f7f4ec;
+}
+
+.catalog-section::before {
+  position: absolute;
+  inset: 0;
+  opacity: 0.32;
+  background-image: radial-gradient(rgba(15, 23, 42, 0.15) 0.7px, transparent 0.7px);
+  background-size: 18px 18px;
+  content: "";
+  pointer-events: none;
+}
+
+.catalog-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.research-category-card {
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.13), 0 4px 12px rgba(15, 23, 42, 0.06);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.research-category-card:hover,
+.research-category-card:focus-within {
+  border-color: rgba(14, 116, 144, 0.5);
+  box-shadow: 0 28px 65px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(249, 115, 22, 0.12);
+  transform: translateY(-6px);
+}
+
+.research-category-card picture {
+  position: relative;
+}
+
+.research-category-card picture::after {
+  position: absolute;
+  inset: auto 0 0;
+  height: 42%;
+  background: linear-gradient(transparent, rgba(2, 6, 23, 0.74));
+  content: "";
+  pointer-events: none;
+}
+
+.research-category-card h3 {
+  margin-block: 0.8rem 0.65rem;
+  color: #0f172a;
+  font-size: clamp(1.65rem, 2.5vw, 2.25rem);
+}
+
+.watchlist-intro {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 86% 12%, rgba(34, 211, 238, 0.1), transparent 24rem),
+    radial-gradient(circle at 10% 100%, rgba(249, 115, 22, 0.09), transparent 24rem),
+    #050816;
+  border-block: 1px solid var(--line);
+}
+
+.watchlist-intro::after {
+  position: absolute;
+  right: -3rem;
+  bottom: -5rem;
+  width: 24rem;
+  height: 14rem;
+  opacity: 0.25;
+  background: repeating-linear-gradient(118deg, transparent 0 18px, rgba(249, 115, 22, 0.42) 19px 22px, transparent 23px 38px);
+  transform: rotate(-8deg);
+  content: "";
+  pointer-events: none;
+}
+
+.watchlist-intro .container {
+  position: relative;
+  z-index: 1;
+}
+
+.watchlist-intro-heading {
+  display: grid;
+  align-items: end;
+  grid-template-columns: minmax(0, 1.25fr) minmax(20rem, 0.75fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  margin-bottom: 2rem;
+}
+
+.watchlist-intro-heading h2 {
+  max-width: 47rem;
+  margin: 0;
+  font-size: clamp(2.3rem, 4vw, 3.75rem);
+  text-wrap: balance;
+}
+
+.watchlist-intro-heading > p {
+  margin: 0;
+  color: #cbd5e1;
+}
+
+.callout.affiliate-status {
+  max-width: none;
+  margin: 0 0 1rem;
+  padding: 1.15rem 1.3rem;
+  background: linear-gradient(100deg, rgba(21, 30, 52, 0.96), rgba(8, 14, 29, 0.96));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 5px solid var(--orange);
+  box-shadow: var(--shadow-raised);
+}
+
+.watchlist-principles li {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(145deg, rgba(18, 27, 49, 0.98), rgba(7, 11, 25, 0.98));
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
+}
+
+.watchlist-principles li::before {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--edge-highlight);
+  content: "";
+}
+
+.watchlist-principles h3 {
+  margin-bottom: 0.55rem;
+  font-size: 1.25rem;
+}
+
+.category-jump a {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  padding: 0.55rem 0.82rem;
+}
+
+.product-section {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 95% 0%, rgba(34, 211, 238, 0.08), transparent 25rem),
+    #f8f5ed;
+}
+
+.section-cream.product-section {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(249, 115, 22, 0.07), transparent 25rem),
+    #edf4f3;
+}
+
+.product-section .section-heading {
+  max-width: 74rem;
+}
+
+.product-card {
+  isolation: isolate;
+  padding-top: 1.35rem;
+  border-color: rgba(15, 23, 42, 0.13);
+  box-shadow: 0 20px 48px rgba(15, 23, 42, 0.12), 0 3px 10px rgba(15, 23, 42, 0.06);
+}
+
+.product-card::after {
+  position: absolute;
+  z-index: -1;
+  inset: auto -4rem -5rem auto;
+  width: 10rem;
+  aspect-ratio: 1;
+  opacity: 0.08;
+  background: repeating-linear-gradient(120deg, transparent 0 11px, var(--orange) 12px 15px, transparent 16px 27px);
+  transform: rotate(-14deg);
+  content: "";
+  pointer-events: none;
+}
+
+.product-card:hover,
+.product-card:focus-within {
+  border-color: rgba(14, 116, 144, 0.58);
+  box-shadow: 0 28px 62px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(34, 211, 238, 0.18);
+  transform: translateY(-6px);
+}
+
+.watchlist-product-media {
+  position: relative;
+  overflow: hidden;
+  margin: -1.35rem -1.5rem 1.35rem;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(34, 211, 238, 0.15), transparent 45%),
+    #050816;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.18);
+}
+
+.watchlist-product-media picture {
+  display: block;
+  aspect-ratio: 4 / 3;
+}
+
+.watchlist-product-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 220ms ease;
+}
+
+.product-card:hover .watchlist-product-media img,
+.product-card:focus-within .watchlist-product-media img {
+  transform: scale(1.035);
+}
+
+.watchlist-product-media figcaption {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.65rem;
+  padding: 0.32rem 0.55rem;
+  color: #e2e8f0;
+  background: rgba(2, 6, 23, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  line-height: 1.25;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+
+.product-grid.two-up .watchlist-product-media picture {
+  aspect-ratio: 16 / 9;
+}
+
+.market-source {
+  font-size: 0.82rem;
+}
+
+@media (min-width: 641px) and (max-width: 1080px) {
+  .product-grid,
+  .product-grid.two-up {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 920px) {
+  .watchlist-intro-heading {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .gear-hero h1 {
+    max-width: 41rem;
+  }
+
   .menu-button {
     display: block;
   }
@@ -2679,6 +2970,12 @@ h3 {
     background-size: 100% 100%, auto, auto, auto 100%, auto;
   }
 
+  .page-hero.gear-hero {
+    min-height: 0;
+    background-position: center, center, center, 62% center;
+    background-size: 100% 100%, 100% 100%, auto, cover;
+  }
+
   .hero-actions .button,
   .button-row .button {
     width: 100%;
@@ -2808,9 +3105,25 @@ h3 {
     min-height: 0;
   }
 
+  .watchlist-intro-heading {
+    display: block;
+  }
+
+  .watchlist-intro-heading > p {
+    margin-top: 1rem;
+  }
+
+  .watchlist-product-media picture,
+  .product-grid.two-up .watchlist-product-media picture {
+    aspect-ratio: 4 / 3;
+  }
+
   .category-jump {
     margin-right: -0.7rem;
     margin-left: -0.7rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    scroll-padding-inline: 1rem;
     border-right: 0;
     border-left: 0;
     border-radius: 0;

@@ -16,7 +16,7 @@ Production hosting: GitHub Pages from the `main` branch, with `splintercatgear.c
 - Custom 404 page and optional static-host security headers
 - Dated popular-gear marketplace watchlist with original buying checks
 - Generated research shortlists for cat toys, scratching posts, and small-space cat trees, backed by exact product evidence records
-- Nine original, product-specific editorial illustrations with responsive WebP and JPEG derivatives
+- Twenty-one original product and watchlist editorial illustrations with responsive WebP and JPEG derivatives
 
 ## Preview locally
 
@@ -60,6 +60,23 @@ The product-specific prompt summaries were:
 - Amazon Basics 22-inch tree: one compact three-step beige-and-charcoal platform tree with jute supports.
 
 For each slug, the committed derivatives are a 1024×1024 WebP (`-editorial-v1.webp`), a 640×640 WebP (`-editorial-v1-640.webp`), and a 1024×1024 JPEG fallback/social image (`-editorial-v1.jpg`). Do not replace them with copied marketplace imagery. If exact licensed photography is added later, retain the source URL, permission or API basis, credit, model/variant, and an internal provenance record before publishing it.
+
+The twelve additional marketplace-watchlist visuals in `assets/watchlist/` were created with the same built-in image generation mode and derivative set on 2026-08-30. Their shared prompt requested a centered, product-only, polished 3D editorial render on a deep navy-to-black studio backdrop with cyan rim light and a restrained orange reflection. It required the full object to remain visible and prohibited cats, people, rooms, props, packaging, logos, brand text, labels, prices, ratings, badges, watermarks, and retailer UI. Each render is an editorial approximation rather than an exact product photograph. The page repeats that limitation before the watchlist and labels every visual.
+
+The watchlist-specific prompt subjects were:
+
+- AMOSIJOY-style cordless window perch: black frame, mesh sling, and four suction cups with no cables.
+- Veken-style stainless fountain: square stainless basin with a central water dome.
+- oneisall-style two-cat feeder: off-white hopper, split chute, and two stainless bowls.
+- Petmate-style open pan: simple slate-blue, low-sided plastic litter pan.
+- PetSafe-style hoodless automatic box: broad tray with a rear motor and rake housing.
+- Pieviev-style double-layer mat: charcoal honeycomb mat with one lifted corner.
+- Litter Genie-style disposal pail: slim off-white sealed waste pail.
+- Tempcore-style tunnel: navy three-way tunnel with a top opening and one ball.
+- Love's Cabin-style bed: charcoal round plush donut bed.
+- Vceoa-style carrier: charcoal rectangular soft carrier with mesh panels.
+- Swihauk-style brush: charcoal-and-cyan slicker brush with metal pins and a push button.
+- Ring-style indoor camera: white cylindrical camera on a round articulated base with a black lens face.
 
 The organic-search operating documents are in [`seo/`](seo/):
 

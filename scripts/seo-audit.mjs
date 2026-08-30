@@ -534,6 +534,43 @@ if (!fs.existsSync(productDataPath)) {
   }
 }
 
+const gearHubFile = path.join(ROOT, "gear", "index.html");
+if (fs.existsSync(gearHubFile)) {
+  const gearHub = fs.readFileSync(gearHubFile, "utf8");
+  const watchlistCards = matches(gearHub, /<article\b[^>]*class=["'][^"']*\bproduct-card\b[^"']*["'][^>]*>/gi);
+  const watchlistFigures = matches(gearHub, /<figure\b[^>]*class=["'][^"']*\bwatchlist-product-media\b[^"']*["'][^>]*>[\s\S]*?<\/figure>/gi);
+
+  if (watchlistCards.length !== 15) errors.push(`gear/index.html must contain 15 marketplace watchlist cards; found ${watchlistCards.length}`);
+  if (watchlistFigures.length !== watchlistCards.length) errors.push(`gear/index.html must render one editorial visual for every watchlist card; found ${watchlistFigures.length} visuals for ${watchlistCards.length} cards`);
+
+  for (const [index, figure] of watchlistFigures.entries()) {
+    const imageMarkup = figure[0].match(/<img\b[^>]*>/i)?.[0] || "";
+    const sourceMarkup = figure[0].match(/<source\b[^>]*>/i)?.[0] || "";
+    const caption = stripMarkup(figure[0].match(/<figcaption\b[^>]*>([\s\S]*?)<\/figcaption>/i)?.[1] || "");
+    const fallback = attribute(imageMarkup, "src");
+    const srcset = attribute(sourceMarkup, "srcset") || "";
+
+    if (attribute(imageMarkup, "alt") !== "") errors.push(`gear/index.html watchlist visual ${index + 1} must use empty alt beside its named product heading`);
+    if (attribute(imageMarkup, "loading") !== "lazy") errors.push(`gear/index.html watchlist visual ${index + 1} must use loading=lazy`);
+    if (caption !== "Original editorial illustration") errors.push(`gear/index.html watchlist visual ${index + 1} is missing the visible editorial-illustration label`);
+    if (!fallback?.startsWith("/assets/products/") && !fallback?.startsWith("/assets/watchlist/")) {
+      errors.push(`gear/index.html watchlist visual ${index + 1} must use an owned local product or watchlist asset`);
+      continue;
+    }
+
+    const fallbackFile = path.join(ROOT, fallback.slice(1));
+    const dimensions = fs.existsSync(fallbackFile) ? imageDimensions(fallbackFile) : null;
+    if (!dimensions || dimensions.width !== 1024 || dimensions.height !== 1024) {
+      errors.push(`gear/index.html watchlist visual ${index + 1} fallback must be 1024 x 1024: ${fallback}`);
+    }
+
+    const responsiveCandidates = srcset.split(",").map((candidate) => candidate.trim().split(/\s+/));
+    if (responsiveCandidates.length !== 2 || !responsiveCandidates.some(([, width]) => width === "640w") || !responsiveCandidates.some(([, width]) => width === "1024w")) {
+      errors.push(`gear/index.html watchlist visual ${index + 1} must provide 640w and 1024w WebP candidates`);
+    }
+  }
+}
+
 const sitemap = fs.readFileSync(path.join(ROOT, "sitemap.xml"), "utf8");
 const sitemapUrls = matches(sitemap, /<loc>([^<]+)<\/loc>/gi).map((item) => decode(item[1]));
 const expectedUrls = pages.filter((page) => !page.noindex && page.canonical).map((page) => page.canonical).sort();
