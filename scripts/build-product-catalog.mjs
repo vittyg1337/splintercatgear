@@ -146,7 +146,7 @@ function footer() {
   return `<footer class="site-footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a class="brand" href="/"><img src="/assets/logo-mark.svg" width="44" height="44" alt=""><span class="brand-name">SPLINTERCAT</span></a><p>Practical indoor-cat setup guides and transparent product research for North American homes.</p></div><div><p class="footer-heading">Explore</p><ul class="footer-links"><li><a href="/guides/">Guides</a></li><li><a href="/gear/">Popular gear</a></li><li><a href="/methodology/">How we test</a></li><li><a href="/about/">Our story</a></li><li><a href="/contact/">Contact</a></li></ul></div><div><p class="footer-heading">Standards</p><ul class="footer-links"><li><a href="/editorial-policy/">Editorial policy</a></li><li><a href="/affiliate-disclosure/">Affiliate disclosure</a></li><li><a href="/privacy/">Privacy</a></li><li><a href="/accessibility/">Accessibility</a></li><li><a href="/terms/">Terms</a></li></ul></div></div><div class="footer-bottom"><p>© <span data-current-year>2026</span> Splintercat. Built in Canada for cats everywhere.</p><p>Not veterinary advice. Ask your veterinarian about individual needs.</p></div></div></footer>`;
 }
 
-function head({ title, description, path, image, imageSmall, imageAlt, type = "website", preloadImage = true, schema }) {
+function head({ title, description, path, image, imageSmall, imageAlt, imageWidth = 1536, imageHeight = 1024, imageType = "image/webp", type = "website", preloadImage = true, schema }) {
   const canonical = `${origin}${path}`;
   const preload = preloadImage
     ? `<link rel="preload" href="${image}" as="image" type="image/webp" imagesrcset="${imageSmall} 800w, ${image} 1536w" imagesizes="(max-width: 880px) 100vw, 52vw" fetchpriority="high">`
@@ -170,13 +170,15 @@ function head({ title, description, path, image, imageSmall, imageAlt, type = "w
   <meta property="og:description" content="${escapeHtml(description)}">
   <meta property="og:url" content="${canonical}">
   <meta property="og:image" content="${origin}${image}">
-  <meta property="og:image:width" content="1536">
-  <meta property="og:image:height" content="1024">
+  <meta property="og:image:type" content="${imageType}">
+  <meta property="og:image:width" content="${imageWidth}">
+  <meta property="og:image:height" content="${imageHeight}">
   <meta property="og:image:alt" content="${escapeHtml(imageAlt)}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${escapeHtml(title)}">
   <meta name="twitter:description" content="${escapeHtml(description)}">
   <meta name="twitter:image" content="${origin}${image}">
+  <meta name="twitter:image:alt" content="${escapeHtml(imageAlt)}">
   ${type === "article" ? `<meta property="article:published_time" content="${publishedAt}T00:00:00-04:00">\n  <meta property="article:modified_time" content="${dataset.checkedAt}T00:00:00-04:00">\n  <meta property="article:author" content="Splintercat Editorial Team">` : ""}
   <script type="application/ld+json">
 ${JSON.stringify(schema, null, 2)}
@@ -194,8 +196,15 @@ function categoryPicture(category, loading = "eager") {
   </figure>`;
 }
 
-function productInitials(product) {
-  return product.name.split(/\s+/).filter(Boolean).slice(0, 2).map((part) => part[0]).join("").toUpperCase();
+function productPicture(product, loading = "lazy") {
+  const image = product.image;
+  return `<figure class="catalog-visual catalog-visual--product">
+    <picture>
+      <source type="image/webp" srcset="${image.srcSmall} 640w, ${image.src} 1024w" sizes="(max-width: 880px) min(100vw, 42rem), 42vw">
+      <img src="${image.fallback}" width="${image.width}" height="${image.height}" alt="${escapeHtml(image.alt)}" loading="${loading}" decoding="async">
+    </picture>
+    <figcaption>${escapeHtml(image.caption)}</figcaption>
+  </figure>`;
 }
 
 function productDescriptor(product) {
@@ -211,9 +220,15 @@ function retailerVerb(url) {
 }
 
 function categoryCard(product) {
+  const image = product.image;
   const specs = product.specs.slice(0, 2).map((spec) => `<div><dt>${escapeHtml(spec.label)}</dt><dd>${escapeHtml(spec.value)}</dd></div>`).join("");
   return `<article class="catalog-product-card">
-    <div class="catalog-product-mark" aria-hidden="true"><span>${escapeHtml(productInitials(product))}</span><small>${escapeHtml(product.format)}</small></div>
+    <figure class="catalog-product-media">
+      <picture>
+        <source type="image/webp" srcset="${image.srcSmall} 640w, ${image.src} 1024w" sizes="(max-width: 640px) min(20rem, calc(100vw - 1.4rem)), (max-width: 920px) 8rem, 9rem">
+        <img src="${image.fallback}" width="${image.width}" height="${image.height}" alt="" loading="lazy" decoding="async">
+      </picture>
+    </figure>
     <div class="catalog-product-copy">
       <p class="content-label">${escapeHtml(product.pickLabel)}</p>
       <h3><a href="/gear/products/${escapeHtml(product.slug)}/">${escapeHtml(product.name)}</a></h3>
@@ -331,6 +346,7 @@ function productPage(product) {
   const path = `/gear/products/${product.slug}/`;
   const canonical = `${origin}${path}`;
   const title = `${product.name}: Specs & Fit | Splintercat`;
+  const imageId = `${canonical}#primaryimage`;
   const productEntity = {
     "@type": "Product",
     "@id": `${canonical}#product`,
@@ -357,10 +373,23 @@ function productPage(product) {
         author: { "@type": "Organization", name: "Splintercat Editorial Team", url: `${origin}/editorial-policy/#research-desk` },
         publisher: { "@id": `${origin}/#organization` },
         isPartOf: { "@id": `${origin}/#website` },
+        image: { "@id": imageId },
+        primaryImageOfPage: { "@id": imageId },
         about: { "@id": `${canonical}#product` },
         mainEntity: { "@id": `${canonical}#product` }
       },
       productEntity,
+      {
+        "@type": "ImageObject",
+        "@id": imageId,
+        url: `${origin}${product.image.fallback}`,
+        contentUrl: `${origin}${product.image.fallback}`,
+        width: product.image.width,
+        height: product.image.height,
+        caption: product.image.caption,
+        creditText: product.image.credit,
+        representativeOfPage: true
+      },
       {
         "@type": "BreadcrumbList",
         itemListElement: [
@@ -382,7 +411,7 @@ function productPage(product) {
 
   return `<!DOCTYPE html>
 <html lang="en">
-${head({ title, description: product.shortAnswer, path, image: category.image, imageSmall: category.imageSmall, imageAlt: category.imageAlt, type: "article", preloadImage: false, schema })}
+  ${head({ title, description: product.shortAnswer, path, image: product.image.fallback, imageSmall: product.image.srcSmall, imageAlt: product.image.alt, imageWidth: product.image.width, imageHeight: product.image.height, imageType: "image/jpeg", type: "article", preloadImage: false, schema })}
 <body>
   <!-- Generated by scripts/build-product-catalog.mjs from data/products.json. -->
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -401,7 +430,7 @@ ${head({ title, description: product.shortAnswer, path, image: category.image, i
 
     <section class="section compact record-overview">
       <div class="container record-overview-grid">
-        ${categoryPicture(category)}
+        ${productPicture(product)}
         <div>
           <p class="eyebrow">Product evidence record</p>
           <h2>What this format is designed to do</h2>

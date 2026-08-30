@@ -48,6 +48,99 @@ function attribute(markup, name) {
   return match ? decode(match[1] ?? match[2]) : null;
 }
 
+function metaValues(source, key, value) {
+  return matches(source, /<meta\b[^>]*>/gi)
+    .filter((tag) => attribute(tag[0], key)?.toLowerCase() === value.toLowerCase())
+    .map((tag) => attribute(tag[0], "content"))
+    .filter(Boolean);
+}
+
+function schemaTypes(entity) {
+  const value = entity?.["@type"];
+  return new Set(Array.isArray(value) ? value : value ? [value] : []);
+}
+
+function schemaReference(value) {
+  if (typeof value === "string") return value;
+  return value?.["@id"] || "";
+}
+
+function schemaEntities(source) {
+  const entities = [];
+  for (const match of matches(source, /<script\s+[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
+    try {
+      const document = JSON.parse(match[1]);
+      const documents = Array.isArray(document) ? document : [document];
+      for (const item of documents) {
+        if (Array.isArray(item?.["@graph"])) entities.push(...item["@graph"]);
+        else if (item && typeof item === "object") entities.push(item);
+      }
+    } catch {
+      // The page-level JSON-LD parser reports the actionable syntax error.
+    }
+  }
+  return entities;
+}
+
+function imageDimensions(file) {
+  const bytes = fs.readFileSync(file);
+
+  if (bytes.length >= 24 && bytes.toString("ascii", 1, 4) === "PNG") {
+    return { width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
+  }
+
+  if (bytes.length >= 12 && bytes[0] === 0xff && bytes[1] === 0xd8) {
+    let offset = 2;
+    while (offset + 9 < bytes.length) {
+      if (bytes[offset] !== 0xff) {
+        offset += 1;
+        continue;
+      }
+      const marker = bytes[offset + 1];
+      if (marker === 0xd8 || marker === 0xd9) {
+        offset += 2;
+        continue;
+      }
+      if (marker === 0xda) break;
+      const length = bytes.readUInt16BE(offset + 2);
+      if (length < 2 || offset + length + 2 > bytes.length) break;
+      if ([0xc0, 0xc1, 0xc2, 0xc3, 0xc5, 0xc6, 0xc7, 0xc9, 0xca, 0xcb, 0xcd, 0xce, 0xcf].includes(marker)) {
+        return { width: bytes.readUInt16BE(offset + 7), height: bytes.readUInt16BE(offset + 5) };
+      }
+      offset += length + 2;
+    }
+  }
+
+  if (bytes.length >= 30 && bytes.toString("ascii", 0, 4) === "RIFF" && bytes.toString("ascii", 8, 12) === "WEBP") {
+    const chunk = bytes.toString("ascii", 12, 16);
+    if (chunk === "VP8X") {
+      return { width: bytes.readUIntLE(24, 3) + 1, height: bytes.readUIntLE(27, 3) + 1 };
+    }
+    if (chunk === "VP8L" && bytes[20] === 0x2f) {
+      const b1 = bytes[21];
+      const b2 = bytes[22];
+      const b3 = bytes[23];
+      const b4 = bytes[24];
+      return {
+        width: 1 + (((b2 & 0x3f) << 8) | b1),
+        height: 1 + (((b4 & 0x0f) << 10) | (b3 << 2) | (b2 >> 6))
+      };
+    }
+    if (chunk === "VP8 ") {
+      for (let offset = 20; offset + 6 < Math.min(bytes.length, 64); offset += 1) {
+        if (bytes[offset] === 0x9d && bytes[offset + 1] === 0x01 && bytes[offset + 2] === 0x2a) {
+          return {
+            width: bytes.readUInt16LE(offset + 3) & 0x3fff,
+            height: bytes.readUInt16LE(offset + 5) & 0x3fff
+          };
+        }
+      }
+    }
+  }
+
+  return null;
+}
+
 function routeToFile(route) {
   const pathname = route.split("#")[0].split("?")[0];
   const clean = decodeURIComponent(pathname);
@@ -210,6 +303,8 @@ for (const target of pages.filter((page) => !page.noindex && page.route.startsWi
   if (incoming.length < 3) addError(target.file, `only ${incoming.length} other indexable pages link to this guide; expected at least 3`);
 }
 
+const MIN_PRODUCT_COUNT = 9;
+const PRODUCT_IMAGE_FIELDS = ["kind", "src", "srcSmall", "fallback", "width", "height", "alt", "caption", "rightsBasis", "credit", "provenanceRecord"];
 const productDataPath = path.join(ROOT, "data", "products.json");
 if (!fs.existsSync(productDataPath)) {
   errors.push("data/products.json is missing");
@@ -220,8 +315,10 @@ if (!fs.existsSync(productDataPath)) {
     const slugs = products.map((product) => product.slug).filter(Boolean);
     const duplicateSlugs = slugs.filter((slug, index) => slugs.indexOf(slug) !== index);
     const expectedCategories = new Set(["cat-toys", "scratching-posts", "cat-trees-small-spaces"]);
+    const productImageOwners = new Map();
 
     if (!products.length) errors.push("data/products.json contains no products");
+    if (products.length < MIN_PRODUCT_COUNT) errors.push(`data/products.json must contain at least ${MIN_PRODUCT_COUNT} product records; found ${products.length}`);
     if (duplicateSlugs.length) errors.push(`data/products.json contains duplicate slugs: ${[...new Set(duplicateSlugs)].join(", ")}`);
     if (!/^\d{4}-\d{2}-\d{2}$/.test(productData.checkedAt || "")) errors.push("data/products.json checkedAt must use YYYY-MM-DD");
     if (!/^\d{4}-\d{2}-\d{2}$/.test(productData.publishedAt || "")) errors.push("data/products.json publishedAt must use YYYY-MM-DD");
@@ -240,6 +337,79 @@ if (!fs.existsSync(productDataPath)) {
       if (!expectedCategories.has(product.category)) errors.push(`data/products.json product ${product.slug} has unknown category ${product.category}`);
       if (!Array.isArray(product.specs) || product.specs.length < 2) errors.push(`data/products.json product ${product.slug} needs at least two specs`);
       if (!Array.isArray(product.cautions) || product.cautions.length < 1) errors.push(`data/products.json product ${product.slug} needs at least one caution`);
+
+      const productLabel = product.slug || "(missing slug)";
+      const image = product.image;
+      if (!image || typeof image !== "object" || Array.isArray(image)) {
+        errors.push(`data/products.json product ${productLabel} is missing its owned-editorial image object`);
+      } else {
+        for (const field of PRODUCT_IMAGE_FIELDS) {
+          if (image[field] === undefined || image[field] === null || image[field] === "") {
+            errors.push(`data/products.json product ${productLabel} image is missing ${field}`);
+          }
+        }
+        if (image.kind !== "owned-editorial-illustration") {
+          errors.push(`data/products.json product ${productLabel} image kind must be owned-editorial-illustration`);
+        }
+        if (image.rightsBasis !== "owned") {
+          errors.push(`data/products.json product ${productLabel} image rightsBasis must be owned`);
+        }
+        if (image.credit !== "Splintercat") {
+          errors.push(`data/products.json product ${productLabel} image credit must be Splintercat`);
+        }
+        for (const field of ["alt", "caption", "provenanceRecord"]) {
+          if (typeof image[field] !== "string" || !image[field].trim()) {
+            errors.push(`data/products.json product ${productLabel} image ${field} must be non-empty text`);
+          }
+        }
+        if (!Number.isInteger(image.width) || image.width !== 1024 || !Number.isInteger(image.height) || image.height !== 1024) {
+          errors.push(`data/products.json product ${productLabel} image dimensions must be 1024 x 1024`);
+        }
+
+        const pathRules = {
+          src: /\.webp$/i,
+          srcSmall: /\.webp$/i,
+          fallback: /\.jpe?g$/i
+        };
+        const ownPaths = new Set();
+        for (const [field, extension] of Object.entries(pathRules)) {
+          const value = image[field];
+          if (typeof value !== "string" || !value.startsWith("/assets/") || value.includes("..") || /[?#]/.test(value)) {
+            errors.push(`data/products.json product ${productLabel} image ${field} must be a clean root-relative /assets/ path`);
+            continue;
+          }
+          if (!extension.test(value)) errors.push(`data/products.json product ${productLabel} image ${field} has the wrong file type: ${value}`);
+          if (product.slug && !value.includes(product.slug)) errors.push(`data/products.json product ${productLabel} image ${field} must include the product slug`);
+          if (ownPaths.has(value)) errors.push(`data/products.json product ${productLabel} reuses the same file for multiple image variants: ${value}`);
+          ownPaths.add(value);
+
+          const existingOwner = productImageOwners.get(value);
+          if (existingOwner && existingOwner !== productLabel) {
+            errors.push(`data/products.json products ${existingOwner} and ${productLabel} share the same image asset: ${value}`);
+          } else {
+            productImageOwners.set(value, productLabel);
+          }
+
+          const file = path.join(ROOT, value.slice(1));
+          if (!fs.existsSync(file)) {
+            errors.push(`data/products.json product ${productLabel} image file does not exist: ${value}`);
+            continue;
+          }
+          const dimensions = imageDimensions(file);
+          if (!dimensions) {
+            errors.push(`data/products.json product ${productLabel} image dimensions could not be read: ${value}`);
+            continue;
+          }
+          if (field === "srcSmall") {
+            if (dimensions.width >= image.width || dimensions.height >= image.height || dimensions.width !== dimensions.height) {
+              errors.push(`data/products.json product ${productLabel} image srcSmall must be a smaller square variant; found ${dimensions.width} x ${dimensions.height}`);
+            }
+          } else if (dimensions.width !== image.width || dimensions.height !== image.height) {
+            errors.push(`data/products.json product ${productLabel} image ${field} is ${dimensions.width} x ${dimensions.height}; expected ${image.width} x ${image.height}`);
+          }
+        }
+      }
+
       for (const urlField of ["manufacturerUrl", "secondarySourceUrl", "amazonUs", "amazonCa"]) {
         if (!product[urlField]) continue;
         try {
@@ -266,6 +436,93 @@ if (!fs.existsSync(productDataPath)) {
       if (!source.includes("Generated by scripts/build-product-catalog.mjs")) addError(productFile, "missing generated-page provenance comment");
       if (!source.includes(`data-commerce-module="${product.slug}"`)) addError(productFile, "missing matching commerce-module identifier");
       if (/"(?:offers|aggregateRating)"\s*:/i.test(source)) addError(productFile, "must not publish offer or aggregate-rating schema without a live approved data source");
+
+      if (image && typeof image === "object" && !Array.isArray(image)) {
+        const expectedImageUrl = `${ORIGIN}${image.fallback}`;
+        const renderedImages = matches(source, /<img\b[^>]*>/gi).map((match) => match[0]);
+        const productImage = renderedImages.find((markup) => attribute(markup, "src") === image.fallback);
+        if (!productImage) {
+          addError(productFile, `does not render the approved product image fallback ${image.fallback}`);
+        } else {
+          if (attribute(productImage, "loading") !== "lazy") addError(productFile, "product evidence image must use loading=lazy");
+          if (attribute(productImage, "alt") !== image.alt) addError(productFile, "product evidence image alt does not match data/products.json");
+          if (Number(attribute(productImage, "width")) !== image.width || Number(attribute(productImage, "height")) !== image.height) {
+            addError(productFile, "product evidence image intrinsic dimensions do not match data/products.json");
+          }
+        }
+
+        const responsiveSource = matches(source, /<source\b[^>]*>/gi)
+          .map((match) => attribute(match[0], "srcset") || "")
+          .find((srcset) => srcset.includes(image.src) && srcset.includes(image.srcSmall));
+        if (!responsiveSource) addError(productFile, "product evidence image is missing its approved responsive WebP sources");
+
+        const captions = matches(source, /<figcaption\b[^>]*>([\s\S]*?)<\/figcaption>/gi).map((match) => stripMarkup(match[1]));
+        if (!captions.includes(image.caption)) addError(productFile, "product evidence image caption does not match data/products.json");
+
+        const expectedMeta = [
+          ["property", "og:image", expectedImageUrl],
+          ["property", "og:image:width", String(image.width)],
+          ["property", "og:image:height", String(image.height)],
+          ["property", "og:image:alt", image.alt],
+          ["name", "twitter:image", expectedImageUrl],
+          ["name", "twitter:image:alt", image.alt]
+        ];
+        for (const [key, name, expected] of expectedMeta) {
+          const values = metaValues(source, key, name);
+          if (values.length !== 1 || values[0] !== expected) {
+            addError(productFile, `${name} must equal ${expected}; found ${values.length === 1 ? values[0] : `${values.length} values`}`);
+          }
+        }
+
+        const entities = schemaEntities(source);
+        const productEntities = entities.filter((entity) => schemaTypes(entity).has("Product"));
+        if (productEntities.length !== 1) addError(productFile, `expected one Product schema entity; found ${productEntities.length}`);
+        for (const entity of productEntities) {
+          if (Object.prototype.hasOwnProperty.call(entity, "image")) {
+            addError(productFile, "owned editorial illustration must not be claimed as Product.image");
+          }
+        }
+
+        const articlePage = entities.find((entity) => {
+          const types = schemaTypes(entity);
+          return types.has("Article") && types.has("WebPage");
+        });
+        if (!articlePage) addError(productFile, "missing combined Article/WebPage schema entity");
+
+        const imageObjects = entities.filter((entity) => schemaTypes(entity).has("ImageObject"));
+        const imageObject = imageObjects.find((entity) => entity.contentUrl === expectedImageUrl);
+        if (!imageObject) {
+          addError(productFile, `missing ImageObject for ${expectedImageUrl}`);
+        } else {
+          if (!imageObject["@id"]) addError(productFile, "product-page ImageObject is missing @id");
+          if (imageObject.url && imageObject.url !== expectedImageUrl) addError(productFile, "product-page ImageObject url does not match contentUrl");
+          if (Number(imageObject.width) !== image.width || Number(imageObject.height) !== image.height) addError(productFile, "product-page ImageObject dimensions do not match image data");
+          if (imageObject.caption !== image.caption) addError(productFile, "product-page ImageObject caption does not match image data");
+          if (imageObject.creditText !== image.credit) addError(productFile, "product-page ImageObject creditText does not match image data");
+          if (articlePage) {
+            const imageId = imageObject["@id"];
+            if (schemaReference(articlePage.image) !== imageId) addError(productFile, "Article/WebPage image does not reference the approved ImageObject");
+            if (schemaReference(articlePage.primaryImageOfPage) !== imageId) addError(productFile, "Article/WebPage primaryImageOfPage does not reference the approved ImageObject");
+          }
+        }
+
+        const categoryFile = path.join(ROOT, "gear", product.category, "index.html");
+        if (fs.existsSync(categoryFile)) {
+          const categorySource = fs.readFileSync(categoryFile, "utf8");
+          const categoryImage = matches(categorySource, /<img\b[^>]*>/gi)
+            .map((match) => match[0])
+            .find((markup) => attribute(markup, "src") === image.fallback);
+          if (!categoryImage) {
+            addError(categoryFile, `category card does not render product image ${image.fallback}`);
+          } else if (attribute(categoryImage, "loading") !== "lazy") {
+            addError(categoryFile, `category-card image for ${productLabel} must use loading=lazy`);
+          }
+          const categoryResponsiveSource = matches(categorySource, /<source\b[^>]*>/gi)
+            .map((match) => attribute(match[0], "srcset") || "")
+            .find((srcset) => srcset.includes(image.src) && srcset.includes(image.srcSmall));
+          if (!categoryResponsiveSource) addError(categoryFile, `category-card image for ${productLabel} is missing approved responsive WebP sources`);
+        }
+      }
     }
 
     const generatedProductPages = pages.filter((page) => page.route.startsWith("/gear/products/"));

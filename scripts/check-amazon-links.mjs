@@ -8,6 +8,28 @@ const requireAffiliate = process.argv.includes("--require-affiliate");
 let amazonLinks = 0;
 let affiliateLinks = 0;
 
+function normalizedEmbeddedUrls(source) {
+  const normalized = source
+    .replaceAll("&amp;", "&")
+    .replace(/\\u002[fF]/g, "/")
+    .replace(/\\u003[aA]/g, ":")
+    .replace(/\\\//g, "/");
+
+  return [...normalized.matchAll(/(?:https?:)?\/\/[a-z0-9.-]+(?::\d+)?(?:[/?#][^"'<>\\\s)]*)?/gi)]
+    .map((match) => match[0]);
+}
+
+function isAmazonImageHost(url) {
+  try {
+    const parsed = new URL(url.startsWith("//") ? `https:${url}` : url);
+    const host = parsed.hostname.toLowerCase().replace(/\.$/, "");
+    return /(?:^|\.)(?:media-amazon|ssl-images-amazon|images-amazon)\.com$/.test(host)
+      || /(?:^|\.)images\.amazon\.(?:com|ca)$/.test(host);
+  } catch {
+    return false;
+  }
+}
+
 async function htmlFiles(directory) {
   const entries = await readdir(directory, { withFileTypes: true });
   const files = [];
@@ -28,8 +50,9 @@ for (const file of await htmlFiles(root)) {
   const anchors = [...html.matchAll(/<a\b[^>]*href="([^"]+)"[^>]*>[\s\S]*?<\/a>/gi)];
   let firstTaggedLink = -1;
 
-  if (/<img\b[^>]*src="https?:\/\/[^" ]*amazon\./i.test(html)) {
-    errors.push(`${name}: Amazon-hosted image found; use owned/licensed art or an approved API workflow.`);
+  const amazonImageUrls = [...new Set(normalizedEmbeddedUrls(html).filter(isAmazonImageHost))];
+  for (const imageUrl of amazonImageUrls) {
+    errors.push(`${name}: Amazon-hosted image URL found in HTML, responsive markup, metadata, or JSON-LD; use owned/licensed art or an approved API workflow: ${imageUrl}`);
   }
 
   for (const anchor of anchors) {

@@ -16,6 +16,7 @@ Production hosting: GitHub Pages from the `main` branch, with `splintercatgear.c
 - Custom 404 page and optional static-host security headers
 - Dated popular-gear marketplace watchlist with original buying checks
 - Generated research shortlists for cat toys, scratching posts, and small-space cat trees, backed by exact product evidence records
+- Nine original, product-specific editorial illustrations with responsive WebP and JPEG derivatives
 
 ## Preview locally
 
@@ -39,6 +40,26 @@ npx --yes html-validate "**/*.html"
 ```
 
 The category and product pages under `gear/cat-toys/`, `gear/scratching-posts/`, `gear/cat-trees-small-spaces/`, and `gear/products/` are generated from `data/products.json`; edit the dataset or generator instead of hand-editing those pages. The SEO audit checks indexable metadata, canonical paths, JSON-LD parsing, image attributes, duplicate IDs, internal links and fragments, sitemap parity, product-data/page parity, and affiliate-link semantics. Use `node scripts/check-amazon-links.mjs --require-affiliate` only after approved Amazon Special Links and the required disclosures are in place.
+
+## Product image provenance
+
+The nine product visuals in `assets/products/` were created for Splintercat with Codex's built-in image generation tool on 2026-08-30. They are original editorial illustrations, not manufacturer or Amazon photographs and not evidence of an exact current variant. Product records display that limitation in a visible caption; category-card thumbnails use empty alternative text because the adjacent product heading already identifies the item. The editorial illustrations may be used as each page's representative `Article`/`WebPage` image, but deliberately are not declared as `Product.image` in structured data.
+
+Every prompt shared this art direction: a square product-only, polished 3D catalogue render on a deep navy-to-black studio gradient with cyan rim light and a restrained orange reflection; centered three-quarter composition; complete object visible; no cats, people, packaging, logos, brand text, labels, prices, ratings, badges, watermarks, or retailer UI. Each prompt explicitly described the output as an original editorial approximation rather than a copied product photograph.
+
+The product-specific prompt summaries were:
+
+- Catstages Tower of Tracks: tiered captive-ball track tower with six cyan and orange balls.
+- Cat Dancer 101: flexible spring-steel wire with rolled-cardboard ends.
+- Go Cat Da Bird: dark wand, tether, swivel, and one natural-feather lure.
+- Nina Ottosson Buggin' Out: low leaf-pattern puzzle board with integrated covers and orange pegs.
+- SmartCat Ultimate Scratching Post: one tall rectangular woven-sisal post on a broad square base.
+- Amazon Basics 35-inch post: one tall jute post, broad base, and one short-cord plush ball.
+- PetFusion Ultimate Scratcher Lounge: one low corrugated-cardboard infinity-curve lounger.
+- Yaheetech 54-inch tree: one stable grey plush tower with two condos, three upper perches, sisal supports, and a discreet restraint strap.
+- Amazon Basics 22-inch tree: one compact three-step beige-and-charcoal platform tree with jute supports.
+
+For each slug, the committed derivatives are a 1024×1024 WebP (`-editorial-v1.webp`), a 640×640 WebP (`-editorial-v1-640.webp`), and a 1024×1024 JPEG fallback/social image (`-editorial-v1.jpg`). Do not replace them with copied marketplace imagery. If exact licensed photography is added later, retain the source URL, permission or API basis, credit, model/variant, and an internal provenance record before publishing it.
 
 The organic-search operating documents are in [`seo/`](seo/):
 
