@@ -3383,9 +3383,9 @@ h3 {
 
 .hero {
   background-image:
-    linear-gradient(90deg, rgba(4, 13, 11, 0.98) 0%, rgba(4, 13, 11, 0.83) 38%, rgba(4, 13, 11, 0.25) 68%, rgba(4, 13, 11, 0.08) 100%),
+    linear-gradient(90deg, rgba(4, 13, 11, 0.08) 0%, rgba(4, 13, 11, 0.25) 34%, rgba(4, 13, 11, 0.84) 66%, rgba(4, 13, 11, 0.98) 100%),
     linear-gradient(180deg, rgba(7, 17, 15, 0.08), rgba(7, 17, 15, 0.78)),
-    image-set(url("/assets/tiger-temple-hero-v1.webp") type("image/webp"), url("/assets/tiger-temple-hero-v1.jpg") type("image/jpeg"));
+    image-set(url("/assets/tiger-temple-hero-left-v2.webp") type("image/webp"), url("/assets/tiger-temple-hero-left-v2.jpg") type("image/jpeg"));
 }
 
 .hero-cinema {
@@ -3402,7 +3402,7 @@ h3 {
   z-index: 4;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(4, 13, 11, 0.98) 0%, rgba(4, 13, 11, 0.84) 37%, rgba(4, 13, 11, 0.28) 67%, rgba(4, 13, 11, 0.08) 100%),
+    linear-gradient(90deg, rgba(4, 13, 11, 0.06) 0%, rgba(4, 13, 11, 0.18) 34%, rgba(4, 13, 11, 0.84) 66%, rgba(4, 13, 11, 0.98) 100%),
     linear-gradient(180deg, rgba(7, 17, 15, 0.04), transparent 55%, rgba(7, 17, 15, 0.82));
   content: "";
 }
@@ -3428,7 +3428,7 @@ h3 {
   object-fit: cover;
   object-position: center;
   filter: saturate(0.96) contrast(1.03);
-  transform-origin: 72% 50%;
+  transform-origin: 28% 50%;
   animation: hero-camera-drift 18s ease-in-out infinite alternate;
   will-change: transform;
 }
@@ -3437,7 +3437,8 @@ h3 {
   position: absolute;
   z-index: 1;
   top: -40%;
-  right: -9%;
+  right: auto;
+  left: -9%;
   width: 58%;
   height: 150%;
   opacity: 0.32;
@@ -3551,11 +3552,14 @@ h3 {
 }
 
 .hero-grid {
-  grid-template-columns: minmax(0, 1.1fr) minmax(20rem, 0.65fr);
-  gap: clamp(3rem, 7vw, 7rem);
+  grid-template-columns: minmax(20rem, 0.82fr) minmax(32rem, 1.18fr);
+  gap: clamp(2rem, 5vw, 5rem);
 }
 
 .hero-copy {
+  grid-column: 2;
+  width: min(100%, 44rem);
+  justify-self: end;
   padding: 0;
   border: 0;
   background: none;
@@ -3565,7 +3569,7 @@ h3 {
 }
 
 .hero-copy h1 {
-  max-width: 13ch;
+  max-width: 12ch;
 }
 
 .hero .accent-text {
@@ -3577,7 +3581,7 @@ h3 {
 }
 
 .hero-visual {
-  display: block;
+  display: none;
   align-self: end;
   padding-bottom: clamp(3rem, 7vh, 6rem);
 }
@@ -3845,6 +3849,15 @@ h3 {
 }
 
 @media (max-width: 920px) {
+  .hero {
+    background-position: center, center, 18% center;
+    background-size: 100% 100%, 100% 100%, cover;
+  }
+
+  .hero-depth-layer img {
+    object-position: 18% center;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
     min-height: auto;
@@ -3852,6 +3865,8 @@ h3 {
   }
 
   .hero-copy {
+    grid-column: 1;
+    justify-self: end;
     max-width: 44rem;
   }
 
@@ -3872,7 +3887,7 @@ h3 {
 
 @media (max-width: 640px) {
   .hero {
-    background-position: center, center, 68% top;
+    background-position: center, center, 8% top;
     background-size: 100% 100%, 100% 100%, auto 390px;
   }
 
@@ -3892,7 +3907,7 @@ h3 {
   }
 
   .hero-depth-layer img {
-    object-position: 68% top;
+    object-position: 8% top;
   }
 
   .hero-light-rays {
