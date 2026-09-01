@@ -108,7 +108,19 @@
   </header>
 
   <main id="main-content">
-    <section class="hero">
+    <section class="hero" data-cinematic-hero>
+      <div class="hero-cinema" aria-hidden="true" data-hero-cinema>
+        <div class="hero-depth-layer" data-hero-depth>
+          <picture>
+            <source srcset="/assets/tiger-temple-hero-v1.webp" type="image/webp">
+            <img src="/assets/tiger-temple-hero-v1.jpg" width="1672" height="941" decoding="async" alt="">
+          </picture>
+        </div>
+        <div class="hero-light-rays"></div>
+        <div class="hero-mist hero-mist-back"></div>
+        <div class="hero-mist hero-mist-front"></div>
+        <canvas class="hero-particles" data-hero-particles></canvas>
+      </div>
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="eyebrow">Indoor cat gear, without the hype</p>
@@ -125,22 +137,21 @@
           </ul>
         </div>
 
-        <div class="hero-visual" aria-hidden="true">
-          <div class="field-card">
+        <div class="hero-visual">
+          <aside class="field-card" aria-label="Choose a starting point">
             <div class="field-card-top">
-              <p class="field-card-kicker">Field subject</p>
-              <p class="field-card-code">SC—001</p>
+              <p class="field-card-kicker">Start with the problem</p>
+              <p class="field-card-code">FIELD GUIDE 01</p>
             </div>
-            <div class="cat-specimen">
-              <img src="/assets/logo-mark.svg" width="240" height="240" alt="">
-            </div>
-            <div class="field-card-notes">
-              <div><span>Habitat</span><strong>Your sofa</strong></div>
-              <div><span>Temperament</span><strong>Unimpressed</strong></div>
-              <div><span>Test standard</span><strong>Real homes</strong></div>
-              <div><span>Weakness</span><strong>Cardboard box</strong></div>
-            </div>
-          </div>
+            <h2>What does your cat need?</h2>
+            <nav class="field-guide-links" aria-label="Common cat-care needs">
+              <a href="/guides/indoor-cat-enrichment/"><span>01</span><strong>More play &amp; enrichment</strong><i aria-hidden="true">↗</i></a>
+              <a href="/guides/litter-box-placement/"><span>02</span><strong>A better litter setup</strong><i aria-hidden="true">↗</i></a>
+              <a href="/gear/scratching-posts/"><span>03</span><strong>Safer scratching choices</strong><i aria-hidden="true">↗</i></a>
+              <a href="/guides/small-apartment-cat-setup/"><span>04</span><strong>Help in a small home</strong><i aria-hidden="true">↗</i></a>
+            </nav>
+            <a class="field-guide-all" href="/guides/">View every guide <span aria-hidden="true">→</span></a>
+          </aside>
         </div>
       </div>
     </section>
